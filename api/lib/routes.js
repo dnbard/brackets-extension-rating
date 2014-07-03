@@ -4,7 +4,6 @@ var api = require('./controllers/api'),
     index = require('./controllers/index');
 
 module.exports = function(app) {
-    
     app.route('/ratings')
         .get(api.getAllRatings)
         .post(api.setRatings);

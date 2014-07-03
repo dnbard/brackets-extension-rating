@@ -21,12 +21,12 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: {
       // configurable paths
-      app: require('./bower.json').appPath || 'app',
+      app: 'app',
       dist: 'dist'
     },
     express: {
       options: {
-        port: process.env.PORT || 9000
+        port: process.env.PORT || 9009
       },
       dev: {
         options: {
@@ -174,7 +174,7 @@ module.exports = function (grunt) {
         options: {
           nodeArgs: ['--debug-brk'],
           env: {
-            PORT: process.env.PORT || 9000
+            PORT: process.env.PORT || 9009
           },
           callback: function (nodemon) {
             nodemon.on('log', function (event) {
@@ -439,7 +439,6 @@ module.exports = function (grunt) {
     if (target === 'debug') {
       return grunt.task.run([
         'clean:server',
-        'bower-install',
         'concurrent:server',
         'autoprefixer',
         'concurrent:debug'
@@ -448,11 +447,9 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'bower-install',
       'concurrent:server',
       'autoprefixer',
       'express:dev',
-      'open',
       'watch'
     ]);
   });
