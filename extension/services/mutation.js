@@ -52,13 +52,14 @@ define(function (require, exports, module){
         _.each(targets, function(target){
             var $t = $(target),
                 id = $t.find('[data-extension-id]').attr('data-extension-id'),
-                extension = extensionService.get(id);
-            if (!extension) { return; }
+                extension = extensionService.get(id),
+                totalDownloads = extension && extension.totalDownloads? extension.totalDownloads : 0;
+            ;
 
             $t.find('.ext-info').append(_.template(downloadsTemplate, {
-                downloads: extension.totalDownloads
+                downloads: totalDownloads
             }));
-            $t.attr('data-extension-loads', extension.totalDownloads);
+            $t.attr('data-extension-loads', totalDownloads);
         });
     }
 
