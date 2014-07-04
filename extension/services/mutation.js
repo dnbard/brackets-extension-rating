@@ -5,7 +5,8 @@ define(function (require, exports, module){
         dialogId = '.extension-manager-dialog.modal',
         extensionService = require('./extensions'),
         downloadsTemplate = require('text!../templates/downloads.html'),
-        selectTemplate = require('text!../templates/sortButton.html');
+        selectTemplate = require('text!../templates/sortButton.html'),
+        infoTemplate = require('text!../templates/moreInfo.html');
 
     function init(){
         var observer = new MutationObserver(function(mutations){
@@ -60,6 +61,16 @@ define(function (require, exports, module){
                 downloads: totalDownloads
             }));
             $t.attr('data-extension-loads', totalDownloads);
+            $t.find('.ext-link_more').click(_.bind(function(event){
+                //WRONG
+                if (this.find('.ext-panel_more').length > 0){
+                    this.find('.ext-panel_more').remove();
+                }
+
+                if ($('.ext-panel_more').length === 0){
+                    this.after(infoTemplate);
+                }
+            }, $t));
         });
     }
 
