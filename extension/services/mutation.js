@@ -23,9 +23,12 @@ define(function (require, exports, module){
     function dialogAddedMutation(mutation){
         var waitForRegistry = true;
 
-        extensionService.updateRegistry(function(){
+        function registryUpdateAction(){
             waitForRegistry = false;
-        });
+        }
+
+        extensionService.updateRegistry()
+            .then(registryUpdateAction, registryUpdateAction);
 
         var target = $(mutation.addedNodes[0]),
             token;

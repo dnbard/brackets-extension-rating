@@ -1,5 +1,6 @@
 define(function (require, exports, module){
     var _ = require('../vendor/lodash.min'),
+        q = require('../vendor/q'),
         github = require('./github'),
         amazon = require('./amazon'),
         extensions = null;
@@ -10,20 +11,17 @@ define(function (require, exports, module){
     }
 
     exports.updateRegistry = function(callback){
+        var defer = q.defer();
+
         amazon.getRegistry()
             .then(function(data){
                 extensions = data;
-
-                if (typeof callback === 'function'){
-                    callback(null, data);
-                }
+                defer.resolve(data);
             }, function(){
                 console.error('Can\'t get registry from Amazon');
-
-                if (typeof callback === 'function'){
-                    callback(true);
-                }
+                defer.reject();
             });
+        return defer.promise;
     }
 
     exports.updateRegistry();
