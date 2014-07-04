@@ -1,0 +1,8 @@
+select.ext_rating {
+    position: absolute;
+    right: 275px;
+    width: 100px;
+    top: 15px;
+    border: 1px solid #cecece;
+    border-radius: 2px;
+}

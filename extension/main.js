@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
-    "use strict";
+    var ExtensionUtils = brackets.getModule('utils/ExtensionUtils');
 
-    require('./services/mutation');
+    ExtensionUtils.loadStyleSheet(module, 'styles/main.css');
+    require('./services/mutation').init();
 });

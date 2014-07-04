@@ -1,13 +1,13 @@
 {
     "name": "dnbard.extensions-rating",
     "title": "Extensions Rating",
-    "description": "Show extensions online rating",
-    "homepage": "https://github.com/dnbard/brakets-extensions-rating",
-    "version": "0.0.0",
+    "description": "Show extension's number of downloads. Add an ability to sort them in Extensions Manager.",
+    "homepage": "https://github.com/dnbard/brackets-extension-rating",
+    "version": "0.1.0",
     "author": "Alex Bardanov <dnbard@gmail.com>",
     "license": "MIT",
     "engines": {
-        "brackets": ">=0.39.0"
+        "brackets": ">=0.38.0"
     },
-    "keywords": ["extensions", "rating", "github"]
+    "keywords": ["extensions", "rating", "github", "downloads"]
 }
