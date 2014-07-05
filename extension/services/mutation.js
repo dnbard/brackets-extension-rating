@@ -37,7 +37,7 @@ define(function (require, exports, module){
             mutateSortButton(target);
 
             token = setInterval(function(){
-                var extensions = target.find('tr'),
+                var extensions = target.find('#registry tr, #installed tr'),
                     extensionCount = extensions.length;
                 if (extensionCount < 200 || waitForRegistry){
                     return;
@@ -53,28 +53,67 @@ define(function (require, exports, module){
     }
 
     function mutateExistingExtensions(targets){
+        if (targets.length === 0) return;
+
+        $('#registry, #installed').click(function(event){
+            var $t = $(event.target),
+                $parent = $(event.currentTarget);
+
+            if ($t.attr('class') === 'ext-link_more'){
+                var id = $t.attr('data-extension-id'),
+                    extension = extensionService.get(id);
+
+                if ($parent.find('.ext-panel_more').length > 0){
+                    $parent.find('.ext-panel_more').remove();
+                }
+
+                var insert = createMorePanelContent(id, extension);
+                $(event.currentTarget).find('tr[data-extension-id="' + id + '"]').after(insert);
+            }
+        });
+
         _.each(targets, function(target){
             var $t = $(target),
                 id = $t.find('[data-extension-id]').attr('data-extension-id'),
                 extension = extensionService.get(id),
                 totalDownloads = extension && extension.totalDownloads? extension.totalDownloads : 0;
-            ;
+
+            $t.attr('data-extension-id', id);
 
             $t.find('.ext-info').append(_.template(downloadsTemplate, {
-                downloads: totalDownloads
+                downloads: totalDownloads,
+                id: id
             }));
             $t.attr('data-extension-loads', totalDownloads);
-            $t.find('.ext-link_more').click(_.bind(function(event){
-                //WRONG
-                if (this.find('.ext-panel_more').length > 0){
-                    this.find('.ext-panel_more').remove();
-                }
-
-                if ($('.ext-panel_more').length === 0){
-                    this.after(infoTemplate);
-                }
-            }, $t));
         });
+    }
+
+    function createMorePanelContent(id, extension){
+        var panel = $('<tr class="ext-panel_more"></tr>'),
+            holder = $('<td colspan="3"></td>'),
+            hide = $('<a href="#">Hide</a>');
+
+        panel.append(holder);
+
+        if (_.isArray(extension.versions)){
+            var versions = extension.versions.slice().reverse();
+
+            _.each(versions, function(info){
+                holder.append(_.template('<div>v ${version} from ${date} - ${downloads} downloads</div>',{
+                    version: info.version,
+                    date: info.published,
+                    downloads: info.downloads || 0
+                }));
+            });
+        }
+
+        hide.click(function(){
+            $('.ext-panel_more').remove();
+        });
+
+        holder.append(hide);
+
+        return panel;
     }
 
     function mutateSortButton(target){
