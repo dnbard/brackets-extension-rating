@@ -35,6 +35,7 @@ define(function (require, exports, module){
 
         if (target.find(dialogId).length === 1){
             mutateSortButton(target);
+            mutateTabButtons(target);
 
             token = setInterval(function(){
                 var extensions = target.find('#registry tr, #installed tr'),
@@ -52,6 +53,12 @@ define(function (require, exports, module){
         }
     }
 
+    function mutateTabButtons(target){
+        target.find('.nav-tabs li').click(function(){
+            returnPanelToNorm();
+        });
+    }
+
     function mutateExistingExtensions(targets){
         if (targets.length === 0) return;
 
@@ -67,8 +74,11 @@ define(function (require, exports, module){
                     $parent.find('.ext-panel_more').remove();
                 }
 
-                var insert = createMorePanelContent(id, extension);
-                $(event.currentTarget).find('tr[data-extension-id="' + id + '"]').after(insert);
+                $parent.find('tr').hide();
+                var insert = createMorePanelContent(id, extension, $parent);
+                $parent.find('tr[data-extension-id="' + id + '"]')
+                    .show()
+                    .after(insert);
             }
         });
 
@@ -88,7 +98,16 @@ define(function (require, exports, module){
         });
     }
 
-    function createMorePanelContent(id, extension){
+    function returnPanelToNorm(parent){
+        $('.ext-panel_more').remove();
+        if (parent){
+            parent.find('tr').show();
+        } else {
+            $('#registry tr, #installed tr').show();
+        }
+    }
+
+    function createMorePanelContent(id, extension, parent){
         var panel = $('<tr class="ext-panel_more"></tr>'),
             holder = $('<td colspan="3"></td>'),
             hide = $('<a href="#">Hide</a>');
@@ -96,19 +115,29 @@ define(function (require, exports, module){
         panel.append(holder);
 
         if (_.isArray(extension.versions)){
-            var versions = extension.versions.slice().reverse();
+            var versions = extension.versions.slice().reverse(),
+                showLines = 5;
 
-            _.each(versions, function(info){
+            _.each(versions, function(info, index){
                 holder.append(_.template('<div>v ${version} from ${date} - ${downloads} downloads</div>',{
                     version: info.version,
                     date: info.published,
                     downloads: info.downloads || 0
                 }));
+                if (index >= showLines - 1 && versions.length > showLines) {
+                    var count = versions.length - (showLines - 1);
+                    if (count === 1) {
+                        holder.append('<div>... and one more version.</div>');
+                    } else {
+                        holder.append(_.template('<div>... and ${count} more versions.</div>',{ count : count }));
+                    }
+                    return false;
+                }
             });
         }
 
         hide.click(function(){
-            $('.ext-panel_more').remove();
+            returnPanelToNorm(parent);
         });
 
         holder.append(hide);
