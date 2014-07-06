@@ -2,11 +2,17 @@ define(function (require, exports, module){
     var _ = require('../vendor/lodash.min'),
         target = $('body')[0],
         config = require('../config'),
+        locale = require('./locale'),
         dialogId = '.extension-manager-dialog.modal',
         extensionService = require('./extensions'),
         downloadsTemplate = require('text!../templates/downloads.html'),
-        selectTemplate = require('text!../templates/sortButton.html'),
-        infoTemplate = require('text!../templates/moreInfo.html');
+        selectTemplate = _.template(require('text!../templates/sortButton.html'),{
+            sortby: locale.get('sortby'),
+            author: locale.get('author'),
+            downloads: locale.get('downloads'),
+            update: locale.get('update'),
+            name: locale.get('name')
+        });
 
     function init(){
         var observer = new MutationObserver(function(mutations){
@@ -45,7 +51,6 @@ define(function (require, exports, module){
                 }
 
                 clearInterval(token);
-                console.log('Found ' + extensionCount + ' extensions');
 
                 //extensionService.add(extensions);
                 mutateExistingExtensions(extensions);
@@ -72,13 +77,14 @@ define(function (require, exports, module){
 
                 if ($parent.find('.ext-panel_more').length > 0){
                     $parent.find('.ext-panel_more').remove();
+                    returnPanelToNorm();
+                } else {
+                    $parent.find('tr').hide();
+                    var insert = createMorePanelContent(id, extension, $parent);
+                    $parent.find('tr[data-extension-id="' + id + '"]')
+                        .show()
+                        .after(insert);
                 }
-
-                $parent.find('tr').hide();
-                var insert = createMorePanelContent(id, extension, $parent);
-                $parent.find('tr[data-extension-id="' + id + '"]')
-                    .show()
-                    .after(insert);
             }
         });
 
@@ -92,6 +98,8 @@ define(function (require, exports, module){
 
             $t.find('.ext-info').append(_.template(downloadsTemplate, {
                 downloads: totalDownloads,
+                str_downloads: locale.get('downloads'),
+                str_more: locale.get('more'),
                 id: id
             }));
             $t.attr('data-extension-loads', totalDownloads);
@@ -107,29 +115,53 @@ define(function (require, exports, module){
         }
     }
 
+    function daysBetween(first, second) {
+        var one = new Date(first.getFullYear(), first.getMonth(), first.getDate());
+        var two = new Date(second.getFullYear(), second.getMonth(), second.getDate());
+
+        var millisecondsPerDay = 1000 * 60 * 60 * 24;
+        var millisBetween = two.getTime() - one.getTime();
+        var days = millisBetween / millisecondsPerDay;
+
+        return Math.abs(Math.ceil(days));
+    }
+
     function createMorePanelContent(id, extension, parent){
         var panel = $('<tr class="ext-panel_more"></tr>'),
-            holder = $('<td colspan="3"></td>'),
-            hide = $('<a href="#">Hide</a>');
+            holder = $('<td colspan="2"></td>'),
+            hide = $(_.template('<td class="ext-action"><button class="btn primary">${str_hide}</button></td>', {
+                str_hide: locale.get('hide')
+            }));
 
         panel.append(holder);
 
         if (_.isArray(extension.versions)){
             var versions = extension.versions.slice().reverse(),
-                showLines = 5;
+                showLines = 3;
+
+            if (extension.totalDownloads){
+                var maxDate = new Date(versions[0].published),
+                    minDate = new Date(versions[versions.length - 1].published),
+                    diffDays = daysBetween(maxDate, minDate) || 1;
+
+                holder.append(_.template(locale.get('statusTemplate'), {
+                    days: diffDays,
+                    dpd: (extension.totalDownloads / diffDays).toFixed(0)
+                }));
+            }
 
             _.each(versions, function(info, index){
-                holder.append(_.template('<div>v ${version} from ${date} - ${downloads} downloads</div>',{
+                holder.append(_.template(locale.get('versionTemplate'),{
                     version: info.version,
-                    date: info.published,
+                    date: new Date(info.published).toLocaleDateString(),
                     downloads: info.downloads || 0
                 }));
                 if (index >= showLines - 1 && versions.length > showLines) {
                     var count = versions.length - (showLines - 1);
                     if (count === 1) {
-                        holder.append('<div>... and one more version.</div>');
+                        holder.append(locale.get('oneMoreVersion'));
                     } else {
-                        holder.append(_.template('<div>... and ${count} more versions.</div>',{ count : count }));
+                        holder.append(_.template(locale.get('moreVersionsTemplate'),{ count : count }));
                     }
                     return false;
                 }
@@ -140,7 +172,7 @@ define(function (require, exports, module){
             returnPanelToNorm(parent);
         });
 
-        holder.append(hide);
+        panel.append(hide);
 
         return panel;
     }
