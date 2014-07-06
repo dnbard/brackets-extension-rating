@@ -1,6 +1,6 @@
 define(function (require, exports, module){
     var dictionaries = {
-        'en-US': require('../locale/en-US')
+        'en-US': require('../locale/en-US'),
         'it': require('../locale/it')
         //More locals to add here
     },
