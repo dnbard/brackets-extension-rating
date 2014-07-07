@@ -140,7 +140,7 @@ define(function (require, exports, module){
                 showLines = 3;
 
             if (extension.totalDownloads){
-                var maxDate = new Date(versions[0].published),
+                var maxDate = new Date(),
                     minDate = new Date(versions[versions.length - 1].published),
                     diffDays = daysBetween(maxDate, minDate) || 1;
 
