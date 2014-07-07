@@ -5,8 +5,10 @@ var api = require('./controllers/api'),
 
 module.exports = function(app) {
     app.route('/ratings')
-        .get(api.getAllRatings)
-        .post(api.setRatings);
+        .get(api.getAllRatings);
+
+    app.route('/rating/:id')
+        .get(api.getRating);
     
     app.route('/')
         .get(index.default);

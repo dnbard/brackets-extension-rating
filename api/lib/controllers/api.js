@@ -1,12 +1,12 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Rating = mongoose.model('Rating'),
+    Extension = mongoose.model('Extension'),
     _ = require('lodash'),
     async = require('async');
 
 exports.getAllRatings = function(req, res){
-    Rating.find({})
+    Extension.find({})
         .exec()
         .then(function(ratings){
             res.send(ratings);
@@ -15,7 +15,21 @@ exports.getAllRatings = function(req, res){
         });
 }
 
-exports.setRatings = function(req, res){
+exports.getRating = function(req, res){
+    var id = req.params['id'];
+
+    Extension.findOne({_id: id}, function(err, extension){
+        if (err){
+            res.status(500).send(err);
+        } else if (!extension){
+            res.status(404).send(extension);
+        } else {
+            res.status(200).send(extension);
+        }
+    })
+}
+
+/*exports.setRatings = function(req, res){
     var payload = req.body;
     
     if (!_.isArray(payload)){
@@ -26,11 +40,11 @@ exports.setRatings = function(req, res){
     
     _.each(payload, function(ext){
         asyncTasks.push(function(callback){
-            Rating.fromExtension(extension, callback);
+            Extension.create(extension, callback);
         });
     });
     
     async.parallel(asyncTasks, function(){
         res.status(200).send();
     });
-}
+}*/

@@ -29,5 +29,8 @@ app.listen(config.port, config.ip, function () {
   console.log('Express server listening on %s:%d, in %s mode', config.ip, config.port, app.get('env'));
 });
 
+//Start scheduler
+require('./lib/services/scheduler').init();
+
 // Expose app
 exports = module.exports = app;
