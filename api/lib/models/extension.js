@@ -14,6 +14,7 @@ var ExtensionSchema = new Schema({
     forks: { type: Number, default: 0 },
     timestamp: { type: Date, default: Date.now },
     githubTimestamp: Date,
+    totalDownloads: Number,
     downloads: [{
         count: Number,
         timestamp: { type: Date, default: Date.now, index: true }
@@ -35,7 +36,8 @@ exports.process = function(extension){
                 description: extension.metadata.description,
                 homepage: extension.metadata.homepage,
                 version: extension.metadata.version,
-                downloads: [{count:extension.totalDownloads}]
+                downloads: [{count:extension.totalDownloads}],
+                totalDownloads: extension.totalDownloads
             });
 
             ext.save();
@@ -45,6 +47,7 @@ exports.process = function(extension){
             ext.description = extension.metadata.description;
             ext.homepage = extension.metadata.homepage;
             ext.version = extension.metadata.version;
+            ext.totalDownloads = extension.totalDownloads;
 
             if (isAddDownloadsCount(ext.downloads)){
                 ext.downloads.push({count: extension.totalDownloads});
