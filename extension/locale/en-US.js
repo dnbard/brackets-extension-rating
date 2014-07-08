@@ -16,7 +16,7 @@ define(function (require, exports, module){
         name: 'Name',
         daily: 'downloads yesterday', //0.3.0
 
-        //Detailed info abour ##
+        //Detailed info about ##
         'click-more': 'Detailed info about', //0.3.0
 
         //Online for ## days, ## downloads per day
