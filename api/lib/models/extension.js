@@ -49,9 +49,9 @@ exports.process = function(extension){
             ext.version = extension.metadata.version;
             ext.totalDownloads = extension.totalDownloads;
 
-            if (isAddDownloadsCount(ext.downloads)){
+            //if (isAddDownloadsCount(ext.downloads)){
                 ext.downloads.push({count: extension.totalDownloads});
-            }
+            //}
 
             ext.save();
         }
