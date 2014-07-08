@@ -111,7 +111,8 @@ define(function (require, exports, module){
             }));
 
             //hide daily downloads counter for extensions without daily downloads
-            if (dailyDownloads === 0) { $t.find('.ext-daily').hide(); }
+            if (!dailyDownloads) { $t.find('.ext-daily').hide(); }
+            console.log(dailyDownloads);
 
             $t.attr('data-extension-loads', totalDownloads);
             $t.attr('data-extension-yesterday', dailyDownloads);
