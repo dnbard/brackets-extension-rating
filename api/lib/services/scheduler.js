@@ -3,7 +3,7 @@ var schedule = require('node-schedule'),
     request = require('request'),
     registry = require('./registry');
 
-var host = process.env.NODE_ENV === 'development'? 'http://localhost:9000/':'http://your_app_name.herokuapp.com/';
+var host = process.env.NODE_ENV === 'development'? 'http://localhost:9000/':'http://brackets-rating.herokuapp.com/';
 
 function pingPongHerokuHandler(){
     request(host, function(err, res, body){ });
