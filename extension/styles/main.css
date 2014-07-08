@@ -4,7 +4,8 @@ select.ext_rating {
     width: 100px;
     top: 15px;
     border: 1px solid #cecece;
-    border-radius: 2px;
+    border-radius: 3px;
+    border: 1px solid #b2b5b5;
 }
 
 span.ext-daily{
