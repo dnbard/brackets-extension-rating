@@ -21,7 +21,7 @@ define(function(require, exports, module){
                 return element;
             }
         }
-        throw new Error('fix me!');
+        return null;
     }
 
     function registerAchievements(){
@@ -46,7 +46,7 @@ define(function(require, exports, module){
                 } else {
                     var today = getDownloadsCounterByDate(extension.downloads),
                         yesterday = getDownloadsCounterByDate(extension.downloads, today.timestamp);
-                    extension.dailyDownloads = today.count - yesterday.count;
+                    extension.dailyDownloads = today && yesterday? today.count - yesterday.count : 0;
                 }
                 registry[extension._id] = extension;
             });

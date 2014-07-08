@@ -4,6 +4,7 @@ define(function (require, exports, module){
         config = require('../config'),
         locale = require('./locale'),
         registry = require('./registry'),
+        badges = require('./badges'),
         dialogId = '.extension-manager-dialog.modal',
         extensionService = require('./extensions'),
         downloadsTemplate = require('text!../templates/downloads.html'),
@@ -112,7 +113,10 @@ define(function (require, exports, module){
 
             //hide daily downloads counter for extensions without daily downloads
             if (!dailyDownloads) { $t.find('.ext-daily').hide(); }
-            console.log(dailyDownloads);
+
+            if (registryEntry.badge && registryEntry.badge.length > 0){
+                $t.find('.ext-info').append('<div><img src="'+badges.goldSmall+'"/></div>');
+            }
 
             $t.attr('data-extension-loads', totalDownloads);
             $t.attr('data-extension-yesterday', dailyDownloads);
