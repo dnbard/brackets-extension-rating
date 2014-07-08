@@ -15,7 +15,7 @@ define(function (require, exports, module){
         name: 'Nome',
 
         //Online for ## days, ## downloads per day
-        statusTemplate: '<div>Online per <b>${days} giorni</b>, <b>${dpd} downloads per giorno</b></div>',
+        statusTemplate: '<div>Online per <b>${days} giorni</b>, <b>${daily} ${str_daily}</b>, <b>${dpd} downloads per giorno</b></div>',
 
         //v ## from ## - ## downloads</div>
         versionTemplate: '<div>v ${version} da ${date} - ${downloads} downloads</div>',

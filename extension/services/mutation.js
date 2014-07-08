@@ -3,6 +3,7 @@ define(function (require, exports, module){
         target = $('body')[0],
         config = require('../config'),
         locale = require('./locale'),
+        registry = require('./registry'),
         dialogId = '.extension-manager-dialog.modal',
         extensionService = require('./extensions'),
         downloadsTemplate = require('text!../templates/downloads.html'),
@@ -11,6 +12,7 @@ define(function (require, exports, module){
             author: locale.get('author'),
             downloads: locale.get('downloads'),
             update: locale.get('update'),
+            trending: locale.get('trending'),
             name: locale.get('name')
         });
 
@@ -92,7 +94,9 @@ define(function (require, exports, module){
             var $t = $(target),
                 id = $t.find('[data-extension-id]').attr('data-extension-id'),
                 extension = extensionService.get(id),
-                totalDownloads = extension && extension.totalDownloads? extension.totalDownloads : 0;
+                registryEntry = registry.get(id),
+                totalDownloads = extension && extension.totalDownloads? extension.totalDownloads : 0,
+                dailyDownloads = registryEntry ? registryEntry.dailyDownloads : 0;
 
             $t.attr('data-extension-id', id);
 
@@ -100,9 +104,17 @@ define(function (require, exports, module){
                 downloads: totalDownloads,
                 str_downloads: locale.get('downloads'),
                 str_more: locale.get('more'),
-                id: id
+                str_daily: locale.get('daily'),
+                str_click_more: locale.get('click-more') + ' ' + registryEntry.title,
+                id: id,
+                daily: dailyDownloads ? dailyDownloads : ''
             }));
+
+            //hide daily downloads counter for extensions without daily downloads
+            if (dailyDownloads === 0) { $t.find('.ext-daily').hide(); }
+
             $t.attr('data-extension-loads', totalDownloads);
+            $t.attr('data-extension-yesterday', dailyDownloads);
         });
     }
 
@@ -131,7 +143,8 @@ define(function (require, exports, module){
             holder = $('<td colspan="2"></td>'),
             hide = $(_.template('<td class="ext-action"><button class="btn primary">${str_hide}</button></td>', {
                 str_hide: locale.get('hide')
-            }));
+            })),
+            registryEntry = registry.get(id);
 
         panel.append(holder);
 
@@ -142,10 +155,13 @@ define(function (require, exports, module){
             if (extension.totalDownloads){
                 var maxDate = new Date(),
                     minDate = new Date(versions[versions.length - 1].published),
-                    diffDays = daysBetween(maxDate, minDate) || 1;
+                    diffDays = daysBetween(maxDate, minDate) || 1,
+                    dailyDownloads = registryEntry.dailyDownloads || 0;
 
                 holder.append(_.template(locale.get('statusTemplate'), {
                     days: diffDays,
+                    daily: dailyDownloads,
+                    str_daily: locale.get('daily'),
                     dpd: (extension.totalDownloads / diffDays).toFixed(0)
                 }));
             }
@@ -208,6 +224,11 @@ define(function (require, exports, module){
         'update': function(elements){
             return _.sortBy(elements, function(el){
                 return - new Date($(el).find('.ext-date').text().replace(' - ', ''));
+            });
+        },
+        'trending' : function(elements){
+            return elements = _.sortBy(elements, function(el){
+                return -parseInt($(el).attr('data-extension-yesterday'));
             });
         }
     }

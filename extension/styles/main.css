@@ -6,3 +6,11 @@ select.ext_rating {
     border: 1px solid #cecece;
     border-radius: 2px;
 }
+
+span.ext-daily{
+    color: rgb(111, 255, 141);
+    background: gray;
+    padding: 0px 4px;
+    border-radius: 5px;
+    font-weight: bold;
+}
