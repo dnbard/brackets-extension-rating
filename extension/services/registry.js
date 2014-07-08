@@ -1,6 +1,9 @@
 define(function(require, exports, module){
     var registry = {},
         _ = require('../vendor/lodash.min'),
+        achievements = [],
+        MostDownloadsAchievement = require('../achievements/mostDownloads'),
+        MostTrendingAchievement = require('../achievements/mostTrending'),
         state = 'production'; //TODO: get this from config
 
     function getDownloadsCounterByDate(array, date){
@@ -21,8 +24,17 @@ define(function(require, exports, module){
         throw new Error('fix me!');
     }
 
+    function registerAchievements(){
+        _.each(achievements, function(achievement){
+            achievement.calculate(registry);
+        });
+    }
+
     exports.init = function(){
         var path = state === 'production'? 'http://brackets-rating.herokuapp.com/' : 'http://localhost:9000/';
+
+        achievements.push(new MostDownloadsAchievement());
+        achievements.push(new MostTrendingAchievement());
 
         $.ajax({
             url: path + 'ratings/'
@@ -38,6 +50,7 @@ define(function(require, exports, module){
                 }
                 registry[extension._id] = extension;
             });
+            registerAchievements();
         });
     }
 

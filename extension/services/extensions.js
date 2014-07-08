@@ -10,7 +10,7 @@ define(function (require, exports, module){
         return extensions[id];
     }
 
-    exports.updateRegistry = function(callback){
+    exports.updateRegistry = function(){
         var defer = q.defer();
 
         amazon.getRegistry()
