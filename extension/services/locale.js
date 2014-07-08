@@ -1,7 +1,7 @@
 define(function (require, exports, module){
     var dictionaries = {
         'en-US': require('../locale/en-US'),
-        'it': require('../locale/it')
+        'it-IT': require('../locale/it-IT')
         //More locals to add here
     },
         _ = require('../vendor/lodash.min'),
