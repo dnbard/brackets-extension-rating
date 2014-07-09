@@ -1,5 +1,6 @@
 define(function(require, exports, module){
     var Achievement = require('./achievement'),
+        config = require('../config'),
         _ = require('../vendor/lodash.min');
 
     function MostTrendingAchievement(){
@@ -18,7 +19,7 @@ define(function(require, exports, module){
             }
         }
 
-        this.tag = '<span>Trending</span>';
+        this.tag = '<img src="'+config.root + 'images/trend.png"/>';
     }
 
     MostTrendingAchievement.prototype = Achievement;
