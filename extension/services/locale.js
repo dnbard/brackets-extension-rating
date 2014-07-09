@@ -1,8 +1,13 @@
 define(function (require, exports, module){
-    var dictionaries = {
-        'en-US': require('../locale/en-US'),
-        'it': require('../locale/it')
-        //More locals to add here
+    var englishLanguage = require('../locale/en-US'),
+        italianLanguage = require('../locale/it'),
+        dictionaries = {
+            'en': englishLanguage,
+            'en-GB': englishLanguage,
+            'en-US': englishLanguage,
+            'it': italianLanguage,
+            'it-IT': italianLanguage
+            //More locals to add here
     },
         _ = require('../vendor/lodash.min'),
         defaultLocale = 'en-US';
