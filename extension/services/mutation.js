@@ -106,7 +106,7 @@ define(function (require, exports, module){
                 str_downloads: locale.get('downloads'),
                 str_more: locale.get('more'),
                 str_daily: locale.get('daily'),
-                str_click_more: locale.get('click-more') + ' ' + registryEntry.title,
+                str_click_more: locale.get('click-more') + ' ' + registryEntry? registryEntry.title : '',
                 id: id,
                 daily: dailyDownloads ? dailyDownloads : ''
             }));
