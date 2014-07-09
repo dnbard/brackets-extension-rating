@@ -15,6 +15,8 @@ define(function(require, exports, module){
                 this.writeBadge(i, extensions[i]);
             }
         }
+
+        this.tag = '<span>Trending</span>';
     }
 
     MostTrendingAchievement.prototype = Achievement;

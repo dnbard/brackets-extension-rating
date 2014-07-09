@@ -97,7 +97,8 @@ define(function (require, exports, module){
                 extension = extensionService.get(id),
                 registryEntry = registry.get(id),
                 totalDownloads = extension && extension.totalDownloads? extension.totalDownloads : 0,
-                dailyDownloads = registryEntry ? registryEntry.dailyDownloads : 0;
+                dailyDownloads = registryEntry ? registryEntry.dailyDownloads : 0,
+                badgeHolder;
 
             $t.attr('data-extension-id', id);
 
@@ -115,7 +116,12 @@ define(function (require, exports, module){
             if (!dailyDownloads) { $t.find('.ext-daily').hide(); }
 
             if (registryEntry.badge && registryEntry.badge.length > 0){
-                $t.find('.ext-info').append('<div><img src="'+config.root + 'images/badge_gold_small.png"/></div>');
+                badgeHolder = $('<div class="ext-badges"></div>');
+                $t.find('.ext-info').append(badgeHolder);
+                for (var i = 0; i < registryEntry.badge.length; i ++){
+                    var badge = registryEntry.badge[i];
+                    badgeHolder.append(badge.achievement.tag);
+                }
             }
 
             $t.attr('data-extension-loads', totalDownloads);

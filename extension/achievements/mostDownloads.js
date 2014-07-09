@@ -1,5 +1,6 @@
 define(function(require, exports, module){
     var Achievement = require('./achievement'),
+        config = require('../config'),
         _ = require('../vendor/lodash.min');
 
     function MostDownloadsAchievement(){
@@ -15,6 +16,8 @@ define(function(require, exports, module){
                 this.writeBadge(i, extensions[i]);
             }
         }
+
+        this.tag = '<img src="'+config.root + 'images/badge_gold_small.png"/>';
     }
 
     MostDownloadsAchievement.prototype = Achievement;
