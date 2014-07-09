@@ -11,13 +11,14 @@ define(function(require, exports, module){
             return array[array.length - 1];
         }
 
-        date = new Date(date).toDateString();
+        date = new Date(date);
 
         for(var i = array.length - 1; i >= 0; i --){
             var element = array[i],
-                elDate = new Date(element.timestamp).toDateString();
+                elDate = new Date(element.timestamp),
+                hours = Math.abs(date - elDate) / 36e5;
 
-            if (elDate !== date){
+            if (hours > 23 || i === 0){
                 return element;
             }
         }
