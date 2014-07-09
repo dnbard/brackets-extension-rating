@@ -17,7 +17,7 @@ var ExtensionSchema = new Schema({
     totalDownloads: Number,
     downloads: [{
         count: Number,
-        timestamp: { type: Date, default: Date.now, index: true }
+        timestamp: { type: Date, default: Date.now }
     }]
 });
 
@@ -48,10 +48,7 @@ exports.process = function(extension){
             ext.homepage = extension.metadata.homepage;
             ext.version = extension.metadata.version;
             ext.totalDownloads = extension.totalDownloads;
-
-            //if (isAddDownloadsCount(ext.downloads)){
-                ext.downloads.push({count: extension.totalDownloads});
-            //}
+            ext.downloads.push({count: extension.totalDownloads});
 
             ext.save();
         }
