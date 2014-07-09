@@ -43,7 +43,7 @@ define(function(require, exports, module){
             _.each(extensions, function(extension){
                 var downloadsListSize = extension.downloads.length;
                 if (downloadsListSize <= 1) {
-                    extension.dailyDownloads = null;
+                    extension.dailyDownloads = 0;
                 } else {
                     var today = getDownloadsCounterByDate(extension.downloads),
                         yesterday = getDownloadsCounterByDate(extension.downloads, today.timestamp);

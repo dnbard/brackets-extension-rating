@@ -115,11 +115,11 @@ define(function (require, exports, module){
             if (!dailyDownloads) { $t.find('.ext-daily').hide(); }
 
             if (registryEntry.badge && registryEntry.badge.length > 0){
-                $t.find('.ext-info').append('<div><img src="'+badges.goldSmall+'"/></div>');
+                $t.find('.ext-info').append('<div><img src="'+config.root + 'images/badge_gold_small.png"/></div>');
             }
 
             $t.attr('data-extension-loads', totalDownloads);
-            $t.attr('data-extension-yesterday', dailyDownloads);
+            $t.attr('data-extension-yesterday', dailyDownloads? dailyDownloads : 0);
         });
     }
 
