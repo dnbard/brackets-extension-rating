@@ -23,11 +23,10 @@ var ExtensionSchema = new Schema({
 
 var Extension = mongoose.model('Extension', ExtensionSchema);
 
-exports.process = function(extension){
+exports.process = function(extension, callback){
     var id = extension.metadata.name;
 
     Extension.findById(id, function(err, ext){
-        console.log(ext);
         if (!ext){
             ext = new Extension({
                 _id: extension.metadata.name,
@@ -40,7 +39,7 @@ exports.process = function(extension){
                 totalDownloads: extension.totalDownloads
             });
 
-            ext.save();
+            ext.save(callback);
         } else {
             ext.title = extension.metadata.title;
             ext.author = extension.metadata.author? extension.metadata.author.name: '';
@@ -50,7 +49,7 @@ exports.process = function(extension){
             ext.totalDownloads = extension.totalDownloads;
             ext.downloads.push({count: extension.totalDownloads});
 
-            ext.save();
+            ext.save(callback);
         }
     });
 }

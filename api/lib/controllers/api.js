@@ -3,16 +3,27 @@
 var mongoose = require('mongoose'),
     Extension = mongoose.model('Extension'),
     _ = require('lodash'),
-    async = require('async');
+    async = require('async'),
+    bus = require('../services/bus');
 
-exports.getAllRatings = function(req, res){
+var registryCache = null;
+
+bus.on(bus.list.REGISTRY.UPDATED, function(result){
     Extension.find({})
         .exec()
         .then(function(ratings){
-            res.send(ratings);
+            registryCache = ratings;
         }, function(err){
-            res.status(500).send(err);
+            console.log(err);
         });
+});
+
+exports.getAllRatings = function(req, res){
+    if (registryCache){
+        res.status(200).send(registryCache);
+    } else {
+        res.status(500).send('Cache is not available');
+    }
 }
 
 exports.getRating = function(req, res){

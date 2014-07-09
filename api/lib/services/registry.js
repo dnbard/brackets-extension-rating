@@ -3,6 +3,7 @@ var request = require('request'),
     zlib = require('zlib'),
     async = require('async'),
     mongoose = require('mongoose'),
+    bus = require('./bus'),
     Extension = require('../models/extension'),
     registryPath = 'http://s3.amazonaws.com/extend.brackets/registry.json',
     body,
@@ -21,8 +22,17 @@ function processJSON(payload){
     var done = 0,
         size = _.size(payload);
 
+    var commands = [];
+
     _.each(payload, function(ext){
-        Extension.process(ext);
+        commands.push(function(callback){
+            Extension.process(ext, callback);
+        });
+    });
+
+    async.parallel(commands, function(err, result){
+        console.log('parallel done');
+        bus.emit(bus.list.REGISTRY.UPDATED, result);
     });
 }
 
