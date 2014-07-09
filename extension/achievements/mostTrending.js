@@ -5,7 +5,9 @@ define(function(require, exports, module){
     function MostTrendingAchievement(){
         this.calculate = function(extensions){
             extensions = _.sortBy(extensions, function(el){
-                return - el.dailyDownloads;
+                return el.dailyDownloads?
+                    - el.dailyDownloads:
+                    0;
             });
 
             for (var i = 0; i < 3; i ++){

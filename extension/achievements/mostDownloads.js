@@ -6,7 +6,9 @@ define(function(require, exports, module){
     function MostDownloadsAchievement(){
         this.calculate = function(extensions){
             extensions = _.sortBy(extensions, function(el){
-                return - el.totalDownloads;
+                return el.totalDownloads?
+                    - el.totalDownloads:
+                    0;
             });
 
             for (var i = 0; i < 3; i ++){
