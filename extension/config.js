@@ -7,6 +7,9 @@ define(function (require, exports, module){
             childList: true,
             characterData: true
         },
-        root: path
+        root: path,
+
+        //don't know how to distinct this states for Bracket Extension yet
+        state: 'production'
     }
 });
