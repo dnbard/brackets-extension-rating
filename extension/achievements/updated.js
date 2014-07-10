@@ -24,7 +24,7 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return '<span>Updated!</span>';
+            return '<img src="'+config.root + 'images/update.png"/>';
         }
     }
 

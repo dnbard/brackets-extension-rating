@@ -20,7 +20,7 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating){
-            return '<img src="'+config.root + 'images/badge_gold_small.png"/>';
+            return '<img src="'+config.root + 'images/top.png"/>';
         }
     }
 
