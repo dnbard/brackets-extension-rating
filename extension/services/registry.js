@@ -2,6 +2,7 @@ define(function(require, exports, module){
     var registry = {},
         _ = require('../vendor/lodash.min'),
         config = require('../config'),
+        ExtensionService = require('./extensions'),
         achievements = [],
         MostDownloadsAchievement = require('../achievements/mostDownloads'),
         MostTrendingAchievement = require('../achievements/mostTrending'),
@@ -47,7 +48,7 @@ define(function(require, exports, module){
             achievements.push(new MostTrendingAchievement());
             achievements.push(new MemorialAchievement());
             achievements.push(new NewExtensionAchievement());
-            achievements.push(new UpdatedAchievement());
+            //achievements.push(new UpdatedAchievement());
             achievements.push(new AuthorAchievement());
             achievements.push(new AdobeAchievement());
         }
@@ -66,7 +67,9 @@ define(function(require, exports, module){
                 }
                 registry[extension._id] = extension;
             });
-            registerAchievements();
+            ExtensionService.isRegistryLoaded().then(function(){
+                registerAchievements();
+            });
 
             //update registry once a hour
             setTimeout(exports.init, 60 * 60 * 1000 /*1 hour */);
