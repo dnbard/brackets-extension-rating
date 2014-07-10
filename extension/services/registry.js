@@ -6,6 +6,8 @@ define(function(require, exports, module){
         MostDownloadsAchievement = require('../achievements/mostDownloads'),
         MostTrendingAchievement = require('../achievements/mostTrending'),
         MemorialAchievement = require('../achievements/memorial'),
+        UpdatedAchievement = require('../achievements/updated'),
+        NewExtensionAchievement = require('../achievements/new'),
         state = config.state;
 
     function getDownloadsCounterByDate(array, date){
@@ -42,6 +44,8 @@ define(function(require, exports, module){
             achievements.push(new MostDownloadsAchievement());
             achievements.push(new MostTrendingAchievement());
             achievements.push(new MemorialAchievement());
+            achievements.push(new NewExtensionAchievement());
+            achievements.push(new UpdatedAchievement());
         }
 
         $.ajax({
