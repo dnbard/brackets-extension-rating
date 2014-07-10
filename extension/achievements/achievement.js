@@ -10,7 +10,7 @@ define(function(require, exports, module){
         this.ranks = badgeRanks;
     }
 
-    Achievement.prototype.writeBadge = function(rank, element, achievement){
+    Achievement.prototype.writeBadge = function(rank, element){
         if (!element){
             throw new Error('Element must be defined');
         }

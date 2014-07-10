@@ -19,7 +19,9 @@ define(function(require, exports, module){
             }
         }
 
-        this.tag = '<img src="'+config.root + 'images/badge_gold_small.png"/>';
+        this.getTag = function(rating){
+            return '<img src="'+config.root + 'images/badge_gold_small.png"/>';
+        }
     }
 
     MostDownloadsAchievement.prototype = Achievement;

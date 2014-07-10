@@ -119,8 +119,9 @@ define(function (require, exports, module){
                 badgeHolder = $('<div class="ext-badges"></div>');
                 $t.find('.ext-info').append(badgeHolder);
                 for (var i = 0; i < registryEntry.badge.length; i ++){
-                    var badge = registryEntry.badge[i];
-                    badgeHolder.append(badge.achievement.tag);
+                    var badge = registryEntry.badge[i],
+                        tag = badge.achievement.getTag(badge.rank, $t);
+                    badgeHolder.append(tag);
                 }
             }
 

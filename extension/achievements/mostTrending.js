@@ -19,7 +19,9 @@ define(function(require, exports, module){
             }
         }
 
-        this.tag = '<img src="'+config.root + 'images/trend.png"/>';
+        this.getTag = function(rating){
+            return '<img src="'+config.root + 'images/trend.png"/>';
+        }
     }
 
     MostTrendingAchievement.prototype = Achievement;
