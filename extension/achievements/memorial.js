@@ -3,7 +3,7 @@ define(function(require, exports, module){
         config = require('../config'),
         _ = require('../vendor/lodash.min'),
         dictionary = {
-            'themesforbrackets': { tag: '<span>100k</span>' }
+            'themesforbrackets': { tag: '<img src="'+config.root + 'images/100k.png"/>' }
         };
 
     function MemorialAchievement(){
