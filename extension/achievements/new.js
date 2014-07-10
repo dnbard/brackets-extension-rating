@@ -10,7 +10,7 @@ define(function(require, exports, module){
                 var regEntry = ExtensionsService.get(extension._id),
                     published, hours;
 
-                if (!regEntry || !regEntry.versions || !regEntry.versions.length || !regEntry.versions.length === 0){
+                if (!regEntry || !regEntry.versions || !regEntry.versions.length || regEntry.versions.length === 0){
                     this.writeBadge(null, extension);
                 } else {
                     published = new Date(regEntry.versions[0].published);

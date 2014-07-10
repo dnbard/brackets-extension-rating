@@ -8,6 +8,8 @@ define(function(require, exports, module){
         MemorialAchievement = require('../achievements/memorial'),
         UpdatedAchievement = require('../achievements/updated'),
         NewExtensionAchievement = require('../achievements/new'),
+        AuthorAchievement = require('../achievements/author'),
+        AdobeAchievement = require('../achievements/adobe'),
         state = config.state;
 
     function getDownloadsCounterByDate(array, date){
@@ -46,6 +48,8 @@ define(function(require, exports, module){
             achievements.push(new MemorialAchievement());
             achievements.push(new NewExtensionAchievement());
             achievements.push(new UpdatedAchievement());
+            achievements.push(new AuthorAchievement());
+            achievements.push(new AdobeAchievement());
         }
 
         $.ajax({
