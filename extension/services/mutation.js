@@ -178,7 +178,11 @@ define(function (require, exports, module){
             _.each(versions, function(info, index){
                 holder.append(_.template(locale.get('versionTemplate'),{
                     version: info.version,
-                    date: new Date(info.published).toLocaleDateString(),
+                    date: new Date(info.published).toLocaleDateString(brackets.getLocale(), {
+                        "year": "numeric",
+                        "month": "2-digit",
+                        "day": "2-digit"
+                    }),
                     downloads: info.downloads || 0
                 }));
                 if (index >= showLines - 1 && versions.length > showLines) {
