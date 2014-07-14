@@ -4,7 +4,6 @@ define(function (require, exports, module){
         config = require('../config'),
         locale = require('./locale'),
         registry = require('./registry'),
-        badges = require('./badges'),
         dialogId = '.extension-manager-dialog.modal',
         extensionService = require('./extensions'),
         downloadsTemplate = require('text!../templates/downloads.html'),
@@ -54,8 +53,6 @@ define(function (require, exports, module){
                 }
 
                 clearInterval(token);
-
-                //extensionService.add(extensions);
                 mutateExistingExtensions(extensions);
             }, 100);
         }

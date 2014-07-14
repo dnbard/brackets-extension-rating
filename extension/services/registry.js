@@ -49,7 +49,7 @@ define(function(require, exports, module){
             achievements.push(new MemorialAchievement());
             achievements.push(new NewExtensionAchievement());
             //achievements.push(new UpdatedAchievement());
-            achievements.push(new AuthorAchievement());
+            //achievements.push(new AuthorAchievement());
             achievements.push(new AdobeAchievement());
         }
 

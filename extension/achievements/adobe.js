@@ -15,7 +15,7 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return '<span>Adobe!</span>';
+            return '<img src="' + config.root + 'images/adobe.png" />';
         }
     }
 
