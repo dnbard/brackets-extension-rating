@@ -14,7 +14,8 @@ function getInstance(){
 function init(instance){
     instance.list = {
         REGISTRY:{
-            UPDATED:'Registry updated'
+            UPDATED:'Registry updated',
+            CACHED: 'Registry cached'
         }
     }
 }

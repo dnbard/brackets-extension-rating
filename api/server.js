@@ -32,5 +32,8 @@ app.listen(config.port, config.ip, function () {
 //Start scheduler
 require('./lib/services/scheduler').init();
 
+//Start cache control
+require('./lib/services/cacheControl').init();
+
 // Expose app
 exports = module.exports = app;
