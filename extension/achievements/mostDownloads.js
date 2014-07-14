@@ -1,7 +1,8 @@
 define(function(require, exports, module){
     var Achievement = require('./achievement'),
         config = require('../config'),
-        _ = require('../vendor/lodash.min');
+        _ = require('../vendor/lodash.min'),
+        numberOfTopExtensoins = 7;
 
     function MostDownloadsAchievement(){
         this.calculate = function(extensions){
@@ -11,7 +12,7 @@ define(function(require, exports, module){
                     0;
             });
 
-            for (var i = 0; i < 3; i ++){
+            for (var i = 0; i < numberOfTopExtensoins; i ++){
                 if (!extensions[i]){
                     break;
                 }
