@@ -14,4 +14,6 @@ exports.init = function(){
         secondHerokuWorker = new ScheduleWorker({minute: 45}, pingPongHerokuHandler);
 
     var registryWorker = new ScheduleWorker({minute: 1}, registry.handler, true);
+
+    var dbFilterWorker = new ScheduleWorker({hour: 1}, registry.dbFilter, true);
 }

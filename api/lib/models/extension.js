@@ -23,6 +23,12 @@ var ExtensionSchema = new Schema({
 
 var Extension = mongoose.model('Extension', ExtensionSchema);
 
+exports.stream = function(query){
+    query = query || {};
+
+    return Extension.find(query).stream();
+}
+
 exports.process = function(extension, callback){
     var id = extension.metadata.name;
 
@@ -52,12 +58,4 @@ exports.process = function(extension, callback){
             ext.save(callback);
         }
     });
-}
-
-function isAddDownloadsCount(downloads){
-    var today = new Date().toDateString();
-    for(var i = 0; i < downloads.length; i ++){
-        if (today == downloads[i].timestamp.toDateString()) return false;
-    }
-    return true;
 }
