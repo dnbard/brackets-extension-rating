@@ -13,9 +13,9 @@ exports.init = function(){
                 if (i === 0 ) { return true; }
 
                 var elDate = new Date(entry.downloads[i].timestamp),
-                    hours = Math.abs(today - elDate) / 36e5;
+                    hours = (Math.abs(today - elDate) / 36e5).toFixed(0);
 
-                if (hours <= 24) { return true; }
+                if (hours % 24 == 0) { return true; }
                 toDelete.push(value);
             });
 
