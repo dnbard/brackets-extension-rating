@@ -20,7 +20,7 @@ define(function (require, exports, module){
         'click-more': 'Detailed info about', //0.3.0
 
         //Online for ## days, ## downloads per day
-        statusTemplate: '<div>Online da <b>${days} giorni</b>, <b>${daily} ${str_daily}</b>, <b>${dpd} download al giorno</b></div>',
+        statusTemplate: '<div>Online da <b>${days} giorni</b>, <b>${daily} ${str_daily}</b>, <b>${dpd} download giornalieri</b></div>',
 
         //v ## from ## - ## downloads</div>
         versionTemplate: '<div>v ${version} da ${date} - ${downloads} download</div>',
