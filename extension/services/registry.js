@@ -77,6 +77,6 @@ define(function(require, exports, module){
     }
 
     exports.get = function(id){
-        return registry[id];
+        return registry[id] || {title: ""};
     }
 });
