@@ -1,7 +1,8 @@
 var schedule = require('node-schedule'),
     ScheduleWorker = require('./worker'),
     request = require('request'),
-    registry = require('./registry');
+    registry = require('./registry'),
+    migrations = require('./migrations');
 
 var host = process.env.NODE_ENV === 'development'? 'http://localhost:9000/':'http://brackets-rating.herokuapp.com/';
 
@@ -16,4 +17,5 @@ exports.init = function(){
     var registryWorker = new ScheduleWorker({minute: 1}, registry.handler, true);
 
     var dbFilterWorker = new ScheduleWorker({hour: 1}, registry.dbFilter, true);
+    //migrations.copyDownloadsInfo();
 }

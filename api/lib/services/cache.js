@@ -2,6 +2,8 @@ var cache = {},
     _ = require('lodash'),
     mongoose = require('mongoose'),
     Extension = mongoose.model('Extension'),
+    Download = mongoose.model('Download'),
+    Q = require('q'),
     bus = require('./bus');
 
 exports.get = function(id){
@@ -28,9 +30,40 @@ bus.on(bus.list.REGISTRY.UPDATED, function(result){
     Extension.find({})
         .exec()
         .then(function(ratings){
-            exports.set('registry', ratings);
-            bus.emit(bus.list.REGISTRY.CACHED, ratings);
+            populateDownloads(ratings).then(function(){
+                exports.set('registry', ratings);
+                bus.emit(bus.list.REGISTRY.CACHED, ratings);
+            }, function(err){
+                console.log(err);
+            });
         }, function(err){
             console.log(err);
         });
 });
+
+function populateDownloads(extensions){
+    var defer = Q.defer(),
+        extList = {};
+
+    _.each(extensions, function(extension){
+        extList[extension._id] = extension;
+    })
+
+    var stream = Download.find({})
+        .sort({ timestamp: 1 })
+        .stream();
+
+    stream.on('data', function(d){
+        var e = extList[d.extension];
+
+        if (!e.downloads){ e.downloads = []; }
+
+        e.downloads.push(d);
+    });
+
+    stream.on('end', function(){
+        defer.resolve();
+    });
+
+    return defer.promise;
+}

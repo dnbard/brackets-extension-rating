@@ -5,6 +5,11 @@ function ScheduleWorker(rule, handler, executeImmediately){
         throw new Error('Handler must be a function');
     }
 
+    if (rule === null && executeImmediately){
+        handler();
+        return;
+    }
+
     this.rule = rule;
     this.job = schedule.scheduleJob(rule, handler);
 

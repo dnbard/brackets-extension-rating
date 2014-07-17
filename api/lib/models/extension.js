@@ -30,7 +30,8 @@ exports.stream = function(query){
 }
 
 exports.process = function(extension, callback){
-    var id = extension.metadata.name;
+    var id = extension.metadata.name,
+        Download = mongoose.model('Download');
 
     Extension.findById(id, function(err, ext){
         if (!ext){
@@ -41,11 +42,18 @@ exports.process = function(extension, callback){
                 description: extension.metadata.description,
                 homepage: extension.metadata.homepage,
                 version: extension.metadata.version,
-                downloads: [{count:extension.totalDownloads}],
+                //downloads: [{count:extension.totalDownloads}],
                 totalDownloads: extension.totalDownloads
             });
 
-            ext.save(callback);
+            var download = new Download({
+                count:extension.totalDownloads,
+                extension: extension.metadata.name
+            });
+
+            ext.save(function(){
+                download.save(callback);
+            });
         } else {
             ext.title = extension.metadata.title;
             ext.author = extension.metadata.author? extension.metadata.author.name: '';
@@ -53,9 +61,16 @@ exports.process = function(extension, callback){
             ext.homepage = extension.metadata.homepage;
             ext.version = extension.metadata.version;
             ext.totalDownloads = extension.totalDownloads;
-            ext.downloads.push({count: extension.totalDownloads});
+            //ext.downloads.push({count: extension.totalDownloads});
 
-            ext.save(callback);
+            var download = new Download({
+                count:extension.totalDownloads,
+                extension: extension.metadata.name
+            });
+
+            ext.save(function(){
+                download.save(callback);
+            });
         }
     });
 }

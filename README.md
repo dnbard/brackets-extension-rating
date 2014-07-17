@@ -1,6 +1,6 @@
 # Brackets Extension Rating
 
-An [brackets IDE](http://brackets.io) extension to display other extensions statictics based on downloads.
+A [brackets IDE](http://brackets.io) extension to display other extensions statictics based on downloads.
 
 ## Brackets extension
 
