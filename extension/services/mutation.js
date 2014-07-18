@@ -106,7 +106,8 @@ define(function (require, exports, module){
                 str_daily: locale.get('daily'),
                 str_click_more: locale.get('click-more') + ' ' + registryEntry? registryEntry.title : '',
                 id: id,
-                daily: dailyDownloads ? dailyDownloads : ''
+                daily: dailyDownloads ? dailyDownloads : '',
+                path: config.root
             }));
 
             //hide daily downloads counter for extensions without daily downloads
