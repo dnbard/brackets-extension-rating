@@ -24,7 +24,7 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return '<img src="'+config.root + 'images/new.png"/>';
+            return '<span title="New extension" class="ext-badge ext-badge-new">New</span>';
         }
     }
 

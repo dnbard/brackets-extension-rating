@@ -21,7 +21,7 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating){
-            return '<img src="'+config.root + 'images/top.png"/>';
+            return '<span title="Most popular extension" class="ext-badge ext-badge-top">Top</span>';
         }
     }
 

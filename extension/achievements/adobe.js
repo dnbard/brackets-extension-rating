@@ -15,7 +15,7 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return '<img src="' + config.root + 'images/adobe.png" />';
+            return '<span title="Extension from Adobe" class="ext-badge ext-badge-adobe">Adobe</span>';
         }
     }
 

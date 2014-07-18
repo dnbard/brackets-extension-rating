@@ -3,7 +3,7 @@ define(function(require, exports, module){
         config = require('../config'),
         _ = require('../vendor/lodash.min'),
         dictionary = {
-            'themesforbrackets': { tag: '<img src="'+config.root + 'images/100k.png"/>' }
+            'themesforbrackets': { tag: '<span title="First extension that have 100k downloads" class="ext-badge ext-badge-100k">100k Downloads</span>' }
         };
 
     function MemorialAchievement(){
