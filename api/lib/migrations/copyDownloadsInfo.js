@@ -1,5 +1,6 @@
 var _ = require('lodash'),
     mongoose = require('mongoose'),
+    Download = mongoose.model('Download'),
     Extension = mongoose.model('Extension');
 
 module.exports = function copyDownloadsInfo(callback){
