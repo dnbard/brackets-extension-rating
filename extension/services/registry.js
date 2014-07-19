@@ -63,6 +63,8 @@ define(function(require, exports, module){
                 } else {
                     var today = getDownloadsCounterByDate(extension.downloads),
                         yesterday = getDownloadsCounterByDate(extension.downloads, today.timestamp);
+                    if (yesterday && !yesterday.count){ yesterday.count = 0; }
+
                     extension.dailyDownloads = today && yesterday? today.count - yesterday.count : 0;
                 }
                 registry[extension._id] = extension;
