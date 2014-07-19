@@ -3,7 +3,6 @@
 var mongoose = require('mongoose'),
     Extension = mongoose.model('Extension'),
     _ = require('lodash'),
-    async = require('async'),
     CacheService = require('../services/cache');
 
 exports.getAllRatings = function(req, res){

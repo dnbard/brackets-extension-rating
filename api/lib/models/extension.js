@@ -21,7 +21,8 @@ var ExtensionSchema = new Schema({
     }]
 });
 
-var Extension = mongoose.model('Extension', ExtensionSchema);
+var Extension = mongoose.model('Extension', ExtensionSchema),
+    Download = null;
 
 exports.stream = function(query){
     query = query || {};
@@ -30,8 +31,8 @@ exports.stream = function(query){
 }
 
 exports.process = function(extension, callback){
-    var id = extension.metadata.name,
-        Download = mongoose.model('Download');
+    var id = extension.metadata.name;
+    Download = Download || mongoose.model('Download');
 
     Extension.findById(id, function(err, ext){
         if (!ext){

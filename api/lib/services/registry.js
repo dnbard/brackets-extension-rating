@@ -31,6 +31,8 @@ function processJSON(payload){
     });
 
     async.parallel(commands, function(err, result){
+        body = undefined;
+
         console.log('parallel done');
         bus.emit(bus.list.REGISTRY.UPDATED, result);
     });
@@ -45,7 +47,7 @@ exports.handler = function(){
 }
 
 exports.dbFilter = function(){
-    setTimeout(function(){
+    /*setTimeout(function(){
         console.log('db filter');
         var stream = Extension.stream();
 
@@ -56,5 +58,5 @@ exports.dbFilter = function(){
                 var version = extension.downloads[i];
             }
         });
-    }, 8000);
+    }, 8000);*/
 }

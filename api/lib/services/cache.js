@@ -19,6 +19,10 @@ exports.set = function(id, value){
         return new Error('Invalid argument');
     }
 
+    if (cache[id]){
+        delete cache[id];
+    }
+
     cache[id] = value;
 }
 
@@ -28,6 +32,7 @@ exports.keys = function(){
 
 bus.on(bus.list.REGISTRY.UPDATED, function(result){
     Extension.find({})
+        .lean()
         .exec()
         .then(function(ratings){
             populateDownloads(ratings).then(function(){
@@ -47,10 +52,11 @@ function populateDownloads(extensions){
 
     _.each(extensions, function(extension){
         extList[extension._id] = extension;
-    })
+    });
 
     var stream = Download.find({})
         .sort({ timestamp: 1 })
+        .lean()
         .stream();
 
     stream.on('data', function(d){
@@ -61,7 +67,7 @@ function populateDownloads(extensions){
         e.downloads.push(d);
     });
 
-    stream.on('end', function(){
+    stream.on('close', function(){
         defer.resolve();
     });
 
