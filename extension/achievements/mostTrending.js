@@ -2,6 +2,7 @@ define(function(require, exports, module){
     var Achievement = require('./achievement'),
         config = require('../config'),
         _ = require('../vendor/lodash.min'),
+        locale = require('../services/locale'),
         numberOfTrendingExtensions = 7;
 
     function MostTrendingAchievement(){
@@ -21,7 +22,10 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating){
-            return '<span title="Most trending extension" class="ext-badge ext-badge-trend">Trending</span>';
+            return _.template('<span title="${title}" class="ext-badge ext-badge-trend">${badge}</span>',{
+                badge: locale.get('badgeTrend'),
+                title: locale.get('badgeTrendTitle')
+            });
         }
     }
 

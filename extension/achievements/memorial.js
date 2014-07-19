@@ -2,8 +2,14 @@ define(function(require, exports, module){
     var Achievement = require('./achievement'),
         config = require('../config'),
         _ = require('../vendor/lodash.min'),
+        locale = require('../services/locale'),
         dictionary = {
-            'themesforbrackets': { tag: '<span title="First extension that have 100k downloads" class="ext-badge ext-badge-100k">100k Downloads</span>' }
+            'themesforbrackets': {
+                tag: _.template('<span title="${title}" class="ext-badge ext-badge-100k">${badge}</span>',{
+                    title: locale.get('badge100kTitle'),
+                    badge: locale.get('badge100k')
+                })
+            }
         };
 
     function MemorialAchievement(){

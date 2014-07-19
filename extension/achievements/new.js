@@ -2,6 +2,7 @@ define(function(require, exports, module){
     var Achievement = require('./achievement'),
         config = require('../config'),
         _ = require('../vendor/lodash.min'),
+        locale = require('../services/locale'),
         ExtensionsService = require('../services/extensions');
 
     function UpdatedAchievement(){
@@ -24,7 +25,10 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return '<span title="New extension" class="ext-badge ext-badge-new">New</span>';
+            return _.template('<span title="${title}" class="ext-badge ext-badge-new">${badge}</span>',{
+                badge: locale.get('badgeNew'),
+                title: locale.get('badgeNewTitle')
+            });
         }
     }
 

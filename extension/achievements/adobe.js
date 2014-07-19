@@ -2,6 +2,7 @@ define(function(require, exports, module){
     var Achievement = require('./achievement'),
         config = require('../config'),
         _ = require('../vendor/lodash.min'),
+        locale = require('../services/locale'),
         ExtensionsService = require('../services/extensions');
 
     function AdobeAchievement(){
@@ -15,7 +16,10 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return '<span title="Extension from Adobe" class="ext-badge ext-badge-adobe">Adobe</span>';
+            return _.template('<span title="${title}" class="ext-badge ext-badge-adobe">${badge}</span>',{
+                badge: locale.get('badgeAdobe'),
+                title: locale.get('badgeAdobeTitle')
+            });
         }
     }
 

@@ -16,6 +16,23 @@ define(function (require, exports, module){
         name: 'Name',
         daily: 'downloads yesterday', //0.3.0
 
+        /*BADGES*/
+        badgeAdobe: 'Adobe',
+        badgeAdobeTitle: 'Extension from Adobe',
+
+        badge100k: '100k Downloads',
+        badge100kTitle: 'First extension that had 100k downloads',
+
+        badgeTop: 'Top',
+        badgeTopTitle: 'Most popular extension',
+
+        badgeTrend: 'Trending',
+        badgeTrendTitle: 'Most trending extension',
+
+        badgeNew: 'New',
+        badgeNewTitle: 'New extension',
+        /*END of BADGES*/
+
         //Detailed info about ##
         'click-more': 'Detailed info about', //0.3.0
 
