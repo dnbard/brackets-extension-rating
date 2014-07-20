@@ -15,6 +15,22 @@ define(function (require, exports, module){
         trending: 'Tendenza', //0.3.0
         name: 'Nome',
         daily: 'download di ieri', //0.3.0
+        
+        /*BADGES*/
+        badgeAdobe: 'Adobe',
+        badgeAdobeTitle: 'Estensione da Adobe'
+        badge100k: 'Download 100k',
+        badge100kTitle: 'Prima estensione che ha 100k download',
+
+        badgeTop: 'Meglio',
+        badgeTopTitle: 'Estensione molto diffusa',
+
+        badgeTrend: 'Di tendenza',
+        badgeTrendTitle: 'Estensione molto di tendenza',
+
+        badgeNew: 'Nuova',
+        badgeNewTitle: 'Nuova estensione',
+        /*END of BADGES*/
 
         //Detailed info about ##
         'click-more': 'Detailed info about', //0.3.0
