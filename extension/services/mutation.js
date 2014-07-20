@@ -93,6 +93,8 @@ define(function (require, exports, module){
                 id = $t.find('[data-extension-id]').attr('data-extension-id'),
                 extension = extensionService.get(id),
                 registryEntry = registry.get(id),
+                stars = registryEntry ? registryEntry.stars : 'NA',
+                forks = registryEntry ? registryEntry.forks : 'NA',
                 totalDownloads = extension && extension.totalDownloads? extension.totalDownloads : 0,
                 dailyDownloads = registryEntry ? registryEntry.dailyDownloads : 0,
                 badgeHolder;
@@ -107,7 +109,9 @@ define(function (require, exports, module){
                 str_click_more: locale.get('click-more') + ' ' + registryEntry? registryEntry.title : '',
                 id: id,
                 daily: dailyDownloads ? dailyDownloads : '',
-                path: config.root
+                path: config.root,
+                stars: stars,
+                forks: forks
             }));
 
             //hide daily downloads counter for extensions without daily downloads

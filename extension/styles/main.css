@@ -43,3 +43,7 @@ span.ext-daily{
 .ext-badges > .ext-badge-100k{
     background: linear-gradient(to bottom, #1e5799 0%,#207cca 59%,#ffea30 60%,#fceb88 100%);
 }
+
+.fa{
+    font-size: 14px;
+}
