@@ -4,7 +4,7 @@ A [brackets IDE](http://brackets.io) extension to display other extensions stati
 
 ## Brackets extension
 
-![example](http://content.screencast.com/users/dnbard/folders/Jing/media/01f17a72-717f-4a89-b88a-a4153664aede/2014-07-14_2314.png)
+![example](http://content.screencast.com/users/dnbard/folders/Jing/media/4f70e278-5c87-48fb-b931-12793d8a7a1b/2014-07-20_1247.png)
 
 ## Localization support
 
