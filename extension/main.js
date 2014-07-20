@@ -5,6 +5,7 @@ define(function (require, exports, module) {
     require('./services/error');
 
     ExtensionUtils.loadStyleSheet(module, 'styles/main.css');
+    ExtensionUtils.loadStyleSheet(module, 'styles/awesome.css');
 
     require('./services/mutation').init();
     require('./services/registry').init();
