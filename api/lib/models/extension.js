@@ -30,6 +30,20 @@ exports.stream = function(query){
     return Extension.find(query).stream();
 }
 
+exports.updateGitHub = function(data){
+    Extension.findById(data.id, function(err, ext){
+        if (err || !ext){
+            return;
+        }
+
+        ext.stars = data.stars;
+        ext.forks = data.forks;
+        ext.githubTimestamp = new Date();
+
+        ext.save();
+    });
+}
+
 exports.process = function(extension, callback){
     var id = extension.metadata.name;
     Download = Download || mongoose.model('Download');

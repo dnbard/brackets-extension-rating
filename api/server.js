@@ -23,6 +23,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 var app = express();
 require('./lib/config/express')(app);
 require('./lib/routes')(app);
+require('./lib/services/github')(app);
 
 // Start server
 app.listen(config.port, config.ip, function () {
