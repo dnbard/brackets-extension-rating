@@ -18,7 +18,7 @@ define(function (require, exports, module){
         
         /*BADGES*/
         badgeAdobe: 'Adobe',
-        badgeAdobeTitle: 'Estensione da Adobe'
+        badgeAdobeTitle: 'Estensione da Adobe',
         badge100k: 'Download 100k',
         badge100kTitle: 'Prima estensione che ha 100k download',
 
