@@ -13,7 +13,9 @@ define(function (require, exports, module){
             downloads: locale.get('downloads'),
             update: locale.get('update'),
             trending: locale.get('trending'),
-            name: locale.get('name')
+            name: locale.get('name'),
+            stars: locale.get('stars'),
+            forks: locale.get('forks')
         });
 
     function init(){
@@ -135,6 +137,8 @@ define(function (require, exports, module){
 
             $t.attr('data-extension-loads', totalDownloads);
             $t.attr('data-extension-yesterday', dailyDownloads? dailyDownloads : 0);
+            $t.attr('data-extension-stars', stars);
+            $t.attr('data-extension-forks', forks);
         });
     }
 
@@ -253,6 +257,16 @@ define(function (require, exports, module){
         'trending' : function(elements){
             return elements = _.sortBy(elements, function(el){
                 return -parseInt($(el).attr('data-extension-yesterday'));
+            });
+        },
+        'stars' : function(elements){
+            return elements = _.sortBy(elements, function(el){
+                return -parseInt($(el).attr('data-extension-stars'));
+            });
+        },
+        'forks' : function(elements){
+            return elements = _.sortBy(elements, function(el){
+                return -parseInt($(el).attr('data-extension-forks'));
             });
         }
     }

@@ -15,8 +15,10 @@ define(function (require, exports, module){
         trending: 'Trending', //0.3.0
         name: 'Name',
         daily: 'downloads yesterday', //0.3.0
+        stars: 'Stars', //0.4.0
+        forks: 'Forks', //0.4.0
 
-        /*BADGES*/
+        /*BADGES - 0.3.2*/
         badgeAdobe: 'Adobe',
         badgeAdobeTitle: 'Extension from Adobe',
 
