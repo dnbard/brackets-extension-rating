@@ -117,6 +117,12 @@ define(function (require, exports, module){
             //hide daily downloads counter for extensions without daily downloads
             if (!dailyDownloads) { $t.find('.ext-daily').hide(); }
 
+            //hide stars counter for extensions without stars on GitHub
+            if (!stars) { $t.find('.ext-stars').hide(); }
+
+            //hide forks counter for extensions without forks on GitHub
+            if (!forks) { $t.find('.ext-forks').hide(); }
+
             if (registryEntry.badge && registryEntry.badge.length > 0){
                 badgeHolder = $('<div class="ext-badges"></div>');
                 $t.find('.ext-info').append(badgeHolder);

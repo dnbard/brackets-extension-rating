@@ -47,3 +47,7 @@ span.ext-daily{
 .fa{
     font-size: 14px;
 }
+
+.ext-stars, .ext-forks{
+    margin-right: 2px;
+}
