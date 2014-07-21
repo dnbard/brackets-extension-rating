@@ -3,12 +3,14 @@
 var mongoose = require('mongoose'),
     Extension = mongoose.model('Extension'),
     _ = require('lodash'),
-    CacheService = require('../services/cache');
+    CacheService = require('../services/cache'),
+    stats = require('../services/stats');
 
 exports.getAllRatings = function(req, res){
     var registry = CacheService.get('registry');
 
     if (registry){
+        stats.tick('ratings');
         res.status(200).send(registry);
     } else {
         res.status(500).send('Registry is not available');
