@@ -23,16 +23,16 @@ exports.get = function(counter){
     return counters[counter] || 0;
 }
 
-exports.save = function(topic, callback){
-    if (typeof counter !== 'string'){
+exports.save = function(topic){
+    if (typeof topic !== 'string'){
         throw new Error('Invalid argument');
     }
 
     var counter = new Counter({
-        count: counters[counter],
-        topic: counter
+        count: counters[topic],
+        topic: topic
     });
 
-    counter.save(callback);
-    counters[counter] = 0;
+    counter.save();
+    counters[topic] = 0;
 }
