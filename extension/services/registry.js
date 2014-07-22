@@ -11,6 +11,8 @@ define(function(require, exports, module){
         NewExtensionAchievement = require('../achievements/new'),
         AuthorAchievement = require('../achievements/author'),
         AdobeAchievement = require('../achievements/adobe'),
+        MostStarsAchievement = require('../achievements/mostStars'),
+        MostForksAchievement = require('../achievements/mostForks'),
         state = config.state;
 
     function getDownloadsCounterByDate(array, date){
@@ -51,6 +53,8 @@ define(function(require, exports, module){
             //achievements.push(new UpdatedAchievement());
             //achievements.push(new AuthorAchievement());
             achievements.push(new AdobeAchievement());
+            achievements.push(new MostStarsAchievement());
+            achievements.push(new MostForksAchievement());
         }
 
         $.ajax({
