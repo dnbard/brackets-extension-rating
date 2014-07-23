@@ -116,6 +116,10 @@ define(function (require, exports, module){
                 forks: forks
             }));
 
+            if (registryEntry.authorAvatar){
+                $t.find('.ext-author > a').prepend('<img class="ext-avatar" src="'+ registryEntry.authorAvatar +'s=20"/>');
+            }
+
             //hide daily downloads counter for extensions without daily downloads
             if (!dailyDownloads) { $t.find('.ext-daily').hide(); }
 

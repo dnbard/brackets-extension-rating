@@ -60,3 +60,9 @@ span.ext-daily{
 .ext-stars, .ext-forks{
     margin-right: 2px;
 }
+
+.ext-avatar{
+    margin-right: 2px;
+    border-radius: 4px;
+    width: 20px;
+}

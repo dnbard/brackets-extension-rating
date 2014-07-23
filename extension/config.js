@@ -10,7 +10,7 @@ define(function (require, exports, module){
         root: path,
 
         //don't know how to distinct this states for Bracket Extension yet
-        //state: 'development'
-        state: 'production'
+        state: 'development'
+        //state: 'production'
     }
 });
