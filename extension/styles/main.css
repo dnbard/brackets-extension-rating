@@ -21,7 +21,7 @@ span.ext-daily{
     margin: 1px 2px 1px 0px;
     border-radius: 3px;
     color: white;
-    text-shadow: 0 0 5px black;
+    /*text-shadow: 0 0 5px black;*/
     display: inline-block;
 }
 
@@ -38,11 +38,11 @@ span.ext-daily{
 }
 
 .ext-badges > .ext-badge-new{
-    background-color: #87BDC3;
+    background: #87BDC3;
 }
 
 .ext-badges > .ext-badge-100k{
-    background: linear-gradient(to bottom, #1e5799 0%,#207cca 59%,#ffea30 60%,#fceb88 100%);
+    background: linear-gradient(to bottom, #1e5799 0%,#1e5799 80%, yellow 80%, yellow 100%);
 }
 
 .ext-badges > .ext-badge-stars{
