@@ -9,7 +9,7 @@ define(function(require, exports, module){
         this.calculate = function(extensions){
             var regexp = /adobe/;
                 _.each(extensions, _.bind(function(extension){
-                if (regexp.test(extension.homepage)){
+                if (regexp.test(extension.homepage) || extension.author.toLowerCase().indexOf('adobe') >= 0){
                     this.writeBadge(null, extension);
                 }
             }, this));
