@@ -5,9 +5,8 @@ define(function(require, exports, module){
         locale = require('../services/locale'),
         dictionary = {
             'themesforbrackets': {
-                tag: _.template('<span title="${title}" class="ext-badge ext-badge-100k">${badge}</span>',{
-                    title: locale.get('badge100kTitle'),
-                    badge: locale.get('badge100k')
+                tag: _.template('<span title="${title}" class="ext-badge ext-badge-100k">100k</span>',{
+                    title: locale.get('badge100kTitle')
                 })
             }
         };
