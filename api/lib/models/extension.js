@@ -8,6 +8,7 @@ var ExtensionSchema = new Schema({
     title: String,
     description: String,
     author: String,
+    authorAvatar: String,
     homepage: String,
     version: String,
     stars: { type: Number, default: 0 },
@@ -39,6 +40,7 @@ exports.updateGitHub = function(data){
         ext.stars = data.stars;
         ext.forks = data.forks;
         ext.githubTimestamp = new Date();
+        ext.authorAvatar = data.authorAvatar;
 
         ext.save();
     });

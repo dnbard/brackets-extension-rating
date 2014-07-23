@@ -49,11 +49,15 @@ function onRemaining(remaining, registry){
                     extension.stars = data.stargazers_count || 0;
                     extension.forks = data.forks || 0;
                     extension.githubTimestamp = new Date().toISOString();
+                    if (data.owner && typeof data.owner.avatar_url === 'string'){
+                        extension.authorAvatar = data.owner.avatar_url
+                    }
 
                     Extension.updateGitHub({
                         id: id,
                         stars: extension.stars,
-                        forks: extension.forks
+                        forks: extension.forks,
+                        authorAvatar: extension.authorAvatar || null
                     });
 
                     console.log(id);
