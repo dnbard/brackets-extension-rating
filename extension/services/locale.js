@@ -1,12 +1,21 @@
 define(function (require, exports, module){
     var englishLanguage = require('../locale/en-US'),
         italianLanguage = require('../locale/it'),
+        romanianLanguage = require('../locale/ro'),
+        spanishLanguage = require('../locale/es'),
+        catalanLanguage = require('../locale/ca-ES'),
         dictionaries = {
             'en': englishLanguage,
             'en-GB': englishLanguage,
             'en-US': englishLanguage,
             'it': italianLanguage,
-            'it-IT': italianLanguage
+            'it-IT': italianLanguage,
+            'ro' : romanianLanguage,
+            'ro-RO' : romanianLanguage,
+            'es' : spanishLanguage,
+            'es-ES' : spanishLanguage,
+            'ca' : catalanLanguage,
+            'ca-ES' : catalanLanguage
             //More locals to add here
     },
         _ = require('../vendor/lodash.min'),
