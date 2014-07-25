@@ -9,7 +9,7 @@ module.exports = function(app) {
 
     app.route('/rating/:id')
         .get(api.getRating);
-    
+
     app.route('/')
         .get(index.default);
 };

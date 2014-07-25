@@ -5,7 +5,7 @@ var should = require('should'),
     request = require('supertest');
 
 describe('GET /api/awesomeThings', function() {
-  
+
   it('should respond with JSON array', function(done) {
     request(app)
       .get('/api/awesomeThings')
