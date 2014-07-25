@@ -205,7 +205,7 @@ define(function (require, exports, module){
                     downloads: info.downloads || 0
                 }));
                 if (index >= showLines - 1 && versions.length > showLines) {
-                    var count = versions.length - (showLines - 1);
+                    var count = versions.length - (showLines);
                     if (count === 1) {
                         holder.append(locale.get('oneMoreVersion'));
                     } else {
