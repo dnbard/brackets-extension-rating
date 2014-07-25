@@ -250,7 +250,7 @@ define(function (require, exports, module){
         },
         'name': function(elements){
             return _.sortBy(elements, function(el){
-                return $(el).find('.ext-author').text();
+                return $(el).find('.ext-name').text();
             });
         },
         'update': function(elements){
