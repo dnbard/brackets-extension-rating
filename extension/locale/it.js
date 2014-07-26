@@ -12,9 +12,11 @@ define(function (require, exports, module){
         sortby: 'Ordina per ...',
         author: 'Autore',
         update: 'Ultimo Aggiornamento',
-        trending: 'Tendenza', //0.3.0
+        trending: 'Moda', //0.3.0
         name: 'Nome',
         daily: 'download di ieri', //0.3.0
+        stars: 'Stelle', //0.4.0
+        forks: 'Fork', //0.4.0
         
         /*BADGES*/
         badgeAdobe: 'Adobe',
@@ -25,11 +27,13 @@ define(function (require, exports, module){
         badgeTop: 'Meglio',
         badgeTopTitle: 'Estensione molto diffusa',
 
-        badgeTrend: 'Di tendenza',
-        badgeTrendTitle: 'Estensione molto di tendenza',
+        badgeTrend: 'Moda',
+        badgeTrendTitle: 'Estensione molto di moda',
 
         badgeNew: 'Nuova',
         badgeNewTitle: 'Nuova estensione',
+        badgeStarsTitle: 'Estensione più diffusa su GitHub', //0.4.0
+        badgeForksTitle: 'Estensione con più Folk su GitHub', //0.4.0
         /*END of BADGES*/
 
         //Detailed info about ##
