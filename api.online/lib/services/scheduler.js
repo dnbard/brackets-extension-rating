@@ -24,7 +24,7 @@ exports.init = function(){
     migrations.do().then(function(){
         var firstHerokuWorker = new ScheduleWorker({ minute: 15 }, pingPongHerokuHandler),
             secondHerokuWorker = new ScheduleWorker({ minute: 45 }, pingPongHerokuHandler),
-            saveStatsWorker = new ScheduleWorker({ second: 0 }, saveStatsHandler),
-            maxUsersWorker = new ScheduleWorker({ second: 3 }, maxUsersCalculator);
+            saveStatsWorker = new ScheduleWorker({ minute: 0 }, saveStatsHandler),
+            maxUsersWorker = new ScheduleWorker({ minute: 1 }, maxUsersCalculator);
     });
 }
