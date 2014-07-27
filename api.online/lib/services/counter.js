@@ -1,5 +1,8 @@
 var q = require('q'),
     Applications = require('../services/applications'),
+
+    bus = require('./bus'),
+    _ = require('lodash'),
     holder = {};
 
 function put(app, user){
@@ -26,5 +29,25 @@ function count(app, user){
 
     return defer.promise;
 }
+
+bus.on(bus.list.COUNTER.SAVE, function(){
+    if (_.size(holder) === 0){
+        bus.emit(bus.list.APPLICATION.ZERO_ONLINE);
+        holder = {};
+        return;
+    }
+
+    _.each(holder, function(app, id){
+        var online = _.size(app);
+
+        bus.emit(bus.list.APPLICATION.SAVE,{
+            id: id,
+            online: online,
+            users: app
+        });
+    });
+
+    holder = {};
+});
 
 exports.count = count;

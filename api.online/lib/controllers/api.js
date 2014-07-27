@@ -19,7 +19,7 @@ function tick(req, res){
 }
 
 function recalculateApps(req, res){
-    applications.init();
+    applications.init(false);
     res.status(200).send();
 }
 
