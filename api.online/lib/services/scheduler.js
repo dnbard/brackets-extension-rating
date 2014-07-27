@@ -5,8 +5,7 @@ var schedule = require('node-schedule'),
     bus = require('./bus');
 
 function pingPongHerokuHandler(){
-    //var host = process.env.NODE_ENV === 'development'? 'http://localhost:9000/':'http://brackets-rating.herokuapp.com/';
-    var host;
+    var host = process.env.NODE_ENV === 'development'? 'http://localhost:9000/':'http://brackets-online.herokuapp.com/';
     if (host !== undefined){
         request(host, function(err, res, body){ });
     }
