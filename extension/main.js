@@ -9,4 +9,5 @@ define(function (require, exports, module) {
 
     require('./services/mutation').init();
     require('./services/registry').init();
+    require('./services/online').init();
 });
