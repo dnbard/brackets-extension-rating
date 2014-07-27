@@ -7,14 +7,24 @@ var mongoose = require('mongoose'),
     applications = require('../services/applications');
 
 function tick(req, res){
-    var app = req.params.app,
-        user = crypto.createHash('md5').update(req.ip).digest('hex');
+    var ipAddr = req.headers["x-forwarded-for"],
+        app = req.params.app,
+        user, list;
+
+    if (ipAddr){
+        list = ipAddr.split(",");
+        ipAddr = list[list.length-1];
+    } else {
+        ipAddr = req.ip;
+    }
+
+    user = crypto.createHash('md5').update(ipAddr).digest('hex');
 
     counter.count(app, user)
         .then(function(result){
-            res.status(200).send('OK - ' + JSON.stringify(result, null, 4));
+            res.status(200).send('OK');
         }, function(){
-            res.status(400).send();
+            res.status(400).send('ERROR');
         });
 }
 
