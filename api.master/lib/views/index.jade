@@ -1,6 +1,12 @@
 doctype html
 html(lang="en")
     head
+        link(href="css/d4.css", rel="stylesheet")
     body
         div Brackets Rating API Server - OK
         div /ratings Requests last hour - #{ratings}
+        div(id="graph")
+        script var data = !{JSON.stringify(data)}
+        script(src="scripts/d3.js")
+        script(src="scripts/d4.js")
+        script(src="scripts/index.js")
