@@ -216,3 +216,4 @@ pip-log.txt
 
 bower_components/
 *.zip
+node_modules/
