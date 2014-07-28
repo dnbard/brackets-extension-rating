@@ -17,4 +17,7 @@ module.exports = function(app) {
 
     app.route('/')
         .get(index.default);
+
+    app.route('/stats')
+        .get(api.stats);
 };

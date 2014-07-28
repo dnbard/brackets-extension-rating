@@ -80,6 +80,14 @@ function check(application){
     return keys[application] !== undefined;
 }
 
+function get(){
+    return Application.find({})
+        .select({name: 1, maxUsers: 1, online: 1, _id: 0})
+        .lean()
+        .exec();
+}
+
 init();
 exports.init = init;
 exports.check = check;
+exports.get = get;

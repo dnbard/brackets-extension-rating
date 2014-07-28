@@ -33,5 +33,14 @@ function recalculateApps(req, res){
     res.status(200).send();
 }
 
+function stats(req, res){
+    applications.get().then(function(apps){
+        res.status(200).send(apps);
+    }, function(err){
+        res.status(500).send('ERROR');
+    });
+}
+
 exports.tick = tick;
 exports.recalculateApps = recalculateApps;
+exports.stats = stats;
