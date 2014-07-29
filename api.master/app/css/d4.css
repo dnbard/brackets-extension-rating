@@ -1,3 +1,15 @@
+body{
+    background: #2fa7fc;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(-45deg, #2fa7fc 0%, #2fa7fc 50%, #288edf 50%, #288edf 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#2fa7fc), color-stop(50%,#2fa7fc), color-stop(50%,#288edf), color-stop(100%,#288edf));
+    background: -webkit-linear-gradient(-45deg, #2fa7fc 0%,#2fa7fc 50%,#288edf 50%,#288edf 100%);
+    background: -o-linear-gradient(-45deg, #2fa7fc 0%,#2fa7fc 50%,#288edf 50%,#288edf 100%);
+    background: -ms-linear-gradient(-45deg, #2fa7fc 0%,#2fa7fc 50%,#288edf 50%,#288edf 100%);
+    background: linear-gradient(135deg, #2fa7fc 0%,#2fa7fc 50%,#288edf 50%,#288edf 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2fa7fc', endColorstr='#288edf',GradientType=1 );
+}
+
 svg.d4 {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
   font-size:11px;
@@ -64,4 +76,27 @@ svg.d4 {
 .d4 .zeroLine line {
     stroke-width:1px;
     stroke: #555;
+}
+
+#graph{
+    text-align: center;
+}
+
+.title{
+    text-align: center;
+    font-size: 14pt;
+    border-bottom: 1px dotted gray;
+    display: inline-block;
+    width: 220px;
+    margin: 10px 40%;
+}
+
+a.link{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+a.link:hover{
+    border-bottom: 1px solid;
 }
