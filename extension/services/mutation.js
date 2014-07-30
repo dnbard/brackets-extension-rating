@@ -97,6 +97,8 @@ define(function (require, exports, module){
                 registryEntry = registry.get(id),
                 stars = registryEntry ? registryEntry.stars : 'NA',
                 forks = registryEntry ? registryEntry.forks : 'NA',
+                online = registryEntry && registryEntry.online ? registryEntry.online : 0,
+                maxUsers = registryEntry && registryEntry.maxUsers ? registryEntry.maxUsers : 0,
                 totalDownloads = extension && extension.totalDownloads? extension.totalDownloads : 0,
                 dailyDownloads = registryEntry ? registryEntry.dailyDownloads : 0,
                 badgeHolder;
@@ -108,12 +110,16 @@ define(function (require, exports, module){
                 str_downloads: locale.get('downloads'),
                 str_more: locale.get('more'),
                 str_daily: locale.get('daily'),
+                str_online: locale.get('onlineTitle'),
+                str_max_users: locale.get('maxUsersTitle'),
                 str_click_more: locale.get('click-more') + ' ' + registryEntry? registryEntry.title : '',
                 id: id,
                 daily: dailyDownloads ? dailyDownloads : '',
                 path: config.root,
                 stars: stars,
-                forks: forks
+                forks: forks,
+                online: online,
+                max_users: maxUsers
             }));
 
             if (registryEntry.authorAvatar){
@@ -128,6 +134,8 @@ define(function (require, exports, module){
 
             //hide forks counter for extensions without forks on GitHub
             if (!forks) { $t.find('.ext-forks').hide(); }
+
+            if (!online) { $t.find('.ext-users').hide(); }
 
             if (registryEntry.badge && registryEntry.badge.length > 0){
                 badgeHolder = $('<div class="ext-badges"></div>');
