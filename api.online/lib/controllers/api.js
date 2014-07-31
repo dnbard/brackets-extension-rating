@@ -13,6 +13,7 @@ function tick(req, res){
         user, list;
 
     if (userId){
+        //TODO: check for that user in database, maybe cache that values on init
         user = userId;
     } else {
         if (ipAddr){

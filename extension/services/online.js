@@ -16,6 +16,7 @@ define(function(require, exports){
 
         $.ajax({ url: url })
             .success(function(data){
+                //TODO: create complex model of data in local storage to support any number of extensions
                 localStorage.setItem(keyId, data);
             }).error(function(){
                 console.log('Can\'t track online status, retry in 5 mins');
