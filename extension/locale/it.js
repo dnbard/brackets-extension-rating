@@ -16,7 +16,7 @@ define(function (require, exports, module){
         name: 'Nome',
         daily: 'download di ieri', //0.3.0
         stars: 'Stelle', //0.4.0
-        forks: 'Fork', //0.4.0
+        forks: 'Popolare', //0.4.0
         
         /*BADGES*/
         badgeAdobe: 'Adobe',
@@ -24,17 +24,20 @@ define(function (require, exports, module){
         badge100k: 'Download 100k',
         badge100kTitle: 'Prima estensione che ha 100k download',
 
-        badgeTop: 'Meglio',
+        badgeTop: 'La migliore',
         badgeTopTitle: 'Estensione molto diffusa',
 
         badgeTrend: 'Moda',
         badgeTrendTitle: 'Estensione molto di moda',
 
-        badgeNew: 'Nuova',
+        badgeNew: 'Novità',
         badgeNewTitle: 'Nuova estensione',
         badgeStarsTitle: 'Estensione più diffusa su GitHub', //0.4.0
-        badgeForksTitle: 'Estensione con più Folk su GitHub', //0.4.0
+        badgeForksTitle: 'Estensione con più popolare su GitHub', //0.4.0
         /*END of BADGES*/
+
+        onlineTitle: 'Numero di utenti che utilizzano questa estensione adesso. Fai clic qui per scoprire come è stato calcolato questo numero.', //0.5.0
+        maxUsersTitle: 'Conteggio complessivo di estensione\'s utenti', //0.5.0
 
         //Detailed info about ##
         'click-more': 'Detailed info about', //0.3.0
