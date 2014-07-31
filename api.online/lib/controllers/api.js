@@ -9,20 +9,25 @@ var mongoose = require('mongoose'),
 function tick(req, res){
     var ipAddr = req.headers["x-forwarded-for"],
         app = req.params.app,
+        userId = req.params.user,
         user, list;
 
-    if (ipAddr){
-        list = ipAddr.split(",");
-        ipAddr = list[list.length-1];
+    if (userId){
+        user = userId;
     } else {
-        ipAddr = req.ip;
-    }
+        if (ipAddr){
+            list = ipAddr.split(",");
+            ipAddr = list[list.length-1];
+        } else {
+            ipAddr = req.ip;
+        }
 
-    user = crypto.createHash('md5').update(ipAddr).digest('hex');
+        user = crypto.createHash('md5').update(ipAddr).digest('hex');
+    }
 
     counter.count(app, user)
         .then(function(result){
-            res.status(200).send('OK');
+            res.status(200).send(user);
         }, function(){
             res.status(400).send('ERROR');
         });
