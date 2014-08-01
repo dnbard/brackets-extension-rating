@@ -7,13 +7,16 @@ var mongoose = require('mongoose'),
     applications = require('../services/applications');
 
 function tick(req, res){
+    //WARNING: this code should be used on Heroku alike hosting providers
+    //if you use own hosting then it is very likely that you need to
+    //rewrite the mechanic of ip acquirement
     var ipAddr = req.headers["x-forwarded-for"],
         app = req.params.app,
         userId = req.params.user,
         user, list;
 
     if (userId){
-        //TODO: check for that user in database, maybe cache that values on init
+        //TODO: check is that user in database, maybe cache that values on init
         user = userId;
     } else {
         if (ipAddr){
