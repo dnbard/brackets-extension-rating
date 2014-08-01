@@ -6,7 +6,7 @@ define(function(require, exports){
         keyId = 'ext-online-id';
 
     function tick(){
-        var userId = localStorage.setItem(keyId), url;
+        var userId = localStorage.getItem(keyId), url;
 
         if (userId){
             url = config.onlineTrackingServiceUrl + 'tick/' + appToken + '/' + userId;
@@ -17,7 +17,7 @@ define(function(require, exports){
         $.ajax({ url: url })
             .success(function(data){
                 //TODO: create complex model of data in local storage to support any number of extensions
-                localStorage.setItem(keyId, data);
+                if (data){ localStorage.setItem(keyId, data); }
             }).error(function(){
                 console.log('Can\'t track online status, retry in 5 mins');
                 setTimeout(tick, mins5);
