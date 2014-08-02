@@ -9,8 +9,6 @@ define(function (require, exports, module){
         },
         root: path,
 
-        onlineTrackingServiceUrl: 'http://brackets-online.herokuapp.com/',
-
         //don't know how to distinct this states for Bracket Extension yet
         //state: 'development'
         state: 'production'
