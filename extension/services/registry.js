@@ -13,6 +13,7 @@ define(function(require, exports, module){
         AdobeAchievement = require('../achievements/adobe'),
         MostStarsAchievement = require('../achievements/mostStars'),
         MostForksAchievement = require('../achievements/mostForks'),
+        ThemeAchievement = require('../achievements/theme'),
         state = config.state;
 
     function getDownloadsCounterByDate(array, date){
@@ -46,6 +47,7 @@ define(function(require, exports, module){
             'http://localhost:9000/';
 
         if (achievements.length === 0){
+            achievements.push(new ThemeAchievement());
             achievements.push(new MostDownloadsAchievement());
             achievements.push(new MostTrendingAchievement());
             achievements.push(new MemorialAchievement());

@@ -36,6 +36,8 @@ define(function (require, exports, module){
 
         badgeStarsTitle: 'Most popular extension on GitHub', //0.4.0
         badgeForksTitle: 'Most forked extension on GitHub', //0.4.0
+
+        themeTitle: 'Brackets Theme',
         /*END of BADGES*/
 
         onlineTitle: 'Number of users that is using this extension right now. Click to find out how this number was calculated.', //0.5.0
