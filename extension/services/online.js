@@ -10,9 +10,9 @@ define(function(require, exports){
             url;
 
         if (userId){
-            url = config.trackingServiceUrl + 'tick/' + appToken + '/' + userId;
+            url = trackingServiceUrl + 'tick/' + appToken + '/' + userId;
         } else {
-            url = config.trackingServiceUrl + 'tick/' + appToken;
+            url = trackingServiceUrl + 'tick/' + appToken;
         }
 
         $.ajax({ url: url })
