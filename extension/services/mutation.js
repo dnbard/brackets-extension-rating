@@ -7,6 +7,7 @@ define(function (require, exports, module){
         dialogId = '.extension-manager-dialog.modal',
         extensionService = require('./extensions'),
         downloadsTemplate = require('text!../templates/downloads.html'),
+        ThemeAchievement = require('../achievements/theme'),
         selectTemplate = _.template(require('text!../templates/sortButton.html'),{
             sortby: locale.get('sortby'),
             author: locale.get('author'),
@@ -15,7 +16,8 @@ define(function (require, exports, module){
             trending: locale.get('trending'),
             name: locale.get('name'),
             stars: locale.get('stars'),
-            forks: locale.get('forks')
+            forks: locale.get('forks'),
+            themes: locale.get('themes')
         });
 
     function init(){
@@ -151,6 +153,10 @@ define(function (require, exports, module){
             $t.attr('data-extension-yesterday', dailyDownloads? dailyDownloads : 0);
             $t.attr('data-extension-stars', stars);
             $t.attr('data-extension-forks', forks);
+
+            if (ThemeAchievement.extensions[id]){
+                $t.attr('data-extension-theme', true);
+            }
         });
     }
 
@@ -281,12 +287,29 @@ define(function (require, exports, module){
                 return -parseInt($(el).attr('data-extension-forks'));
             });
         }
-    }
+    };
+
+    var workaroundHandlers = {
+        'default': function(elements){
+            $(elements).show();
+        },
+        'themes': function(elements){
+            _.each(elements, function(element){
+                var $e = $(element);
+                if ($e.attr('data-extension-theme') != 'true'){
+                    $e.hide();
+                }
+            });
+        }
+    };
 
     function sort(criteria){
         var handler = sortHandlers[criteria],
+            workaroundHandler = workaroundHandlers[criteria] || workaroundHandlers.default;
             holder = $(dialogId).find('.extension-list.active tbody'),
             elements = holder.find('tr');
+
+        workaroundHandler(elements);
 
         if (typeof handler !== 'function'){ return; }
 

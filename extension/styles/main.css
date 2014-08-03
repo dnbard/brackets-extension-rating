@@ -57,7 +57,7 @@ span.ext-daily{
 
 .ext-badges > .ext-badge-theme{
     margin-left: 0px;
-    padding-left: 0px;
+    padding: 0px;
 }
 
 .fa{
@@ -72,7 +72,7 @@ span.ext-daily{
 
 .fa-code-fork {
     position: relative;
-    top: 2px;    
+    top: 2px;
 }
 
 .ext-stars, .ext-forks{
@@ -87,7 +87,7 @@ span.ext-daily{
 }
 
 .ext-name {
-    margin-bottom: 3px !important;    
+    margin-bottom: 3px !important;
 }
 
 .ext-info {

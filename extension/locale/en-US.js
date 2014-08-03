@@ -17,6 +17,7 @@ define(function (require, exports, module){
         daily: 'downloads yesterday', //0.3.0
         stars: 'Stars', //0.4.0
         forks: 'Forks', //0.4.0
+        themes: 'Themes', //0.5.0
 
         /*BADGES - 0.3.2*/
         badgeAdobe: 'Adobe',
