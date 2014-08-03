@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
     _ = require('lodash'),
     crypto = require('crypto'),
     counter = require('../services/counter'),
-    applications = require('../services/applications');
+    applications = require('../services/applications'),
+    usersCache = require('../services/usersCache');
 
 function tick(req, res){
     //WARNING: this code should be used on Heroku alike hosting providers
@@ -15,8 +16,7 @@ function tick(req, res){
         userId = req.params.user,
         user, list;
 
-    if (userId){
-        //TODO: check is that user in database, maybe cache that values on init
+    if (userId && usersCache.check(userId)){
         user = userId;
     } else {
         if (ipAddr){
@@ -27,6 +27,7 @@ function tick(req, res){
         }
 
         user = crypto.createHash('md5').update(ipAddr).digest('hex');
+        usersCache.add(user);
     }
 
     counter.count(app, user)
