@@ -45,7 +45,7 @@ define(function(require, exports){
             throw new Error('Invalid argument');
         }
 
-        var obj = (localStorage.getItem(keyId) || { });
+        var obj = JSON.parse(localStorage.getItem(keyId) || '{ }');
         obj[appToken] = id;
         localStorage.setItem(keyId, JSON.stringify(obj));
     }
