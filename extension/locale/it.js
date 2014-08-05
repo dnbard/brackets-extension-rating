@@ -38,6 +38,7 @@ define(function (require, exports, module){
 
         onlineTitle: 'Numero di utenti che utilizzano questa estensione adesso. Fai clic qui per scoprire come è stato calcolato questo numero.', //0.5.0
         maxUsersTitle: 'Conteggio complessivo di estensione\'s utenti', //0.5.0
+        themes: 'Temi', //0.5.0
 
         //Detailed info about ##
         'click-more': 'Detailed info about', //0.3.0
