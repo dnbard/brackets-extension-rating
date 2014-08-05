@@ -17,6 +17,7 @@ define(function (require, exports, module){
         daily: 'downloads yesterday', //0.3.0
         stars: 'Stars', //0.4.0
         forks: 'Forks', //0.4.0
+        themes: 'Themes', //0.5.0
 
         /*BADGES - 0.3.2*/
         badgeAdobe: 'Adobe',
@@ -36,7 +37,12 @@ define(function (require, exports, module){
 
         badgeStarsTitle: 'Most popular extension on GitHub', //0.4.0
         badgeForksTitle: 'Most forked extension on GitHub', //0.4.0
+
+        themeTitle: 'Brackets Theme',
         /*END of BADGES*/
+
+        onlineTitle: 'Number of users that is using this extension right now. Click to find out how this number was calculated.', //0.5.0
+        maxUsersTitle: 'Overall count of extension\'s users', //0.5.0
 
         //Detailed info about ##
         'click-more': 'Detailed info about', //0.3.0

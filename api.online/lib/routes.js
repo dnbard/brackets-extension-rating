@@ -12,9 +12,15 @@ module.exports = function(app) {
     app.route('/tick/:app')
         .get(api.tick);
 
+    app.route('/tick/:app/:user')
+        .get(api.tick);
+
     app.route('/apps')
         .get(api.recalculateApps);
 
     app.route('/')
         .get(index.default);
+
+    app.route('/stats')
+        .get(api.stats);
 };

@@ -7,6 +7,7 @@ define(function (require, exports, module){
         dialogId = '.extension-manager-dialog.modal',
         extensionService = require('./extensions'),
         downloadsTemplate = require('text!../templates/downloads.html'),
+        ThemeAchievement = require('../achievements/theme'),
         selectTemplate = _.template(require('text!../templates/sortButton.html'),{
             sortby: locale.get('sortby'),
             author: locale.get('author'),
@@ -15,7 +16,8 @@ define(function (require, exports, module){
             trending: locale.get('trending'),
             name: locale.get('name'),
             stars: locale.get('stars'),
-            forks: locale.get('forks')
+            forks: locale.get('forks'),
+            themes: locale.get('themes')
         });
 
     function init(){
@@ -97,6 +99,8 @@ define(function (require, exports, module){
                 registryEntry = registry.get(id),
                 stars = registryEntry ? registryEntry.stars : 'NA',
                 forks = registryEntry ? registryEntry.forks : 'NA',
+                online = registryEntry && registryEntry.online ? registryEntry.online : 0,
+                maxUsers = registryEntry && registryEntry.maxUsers ? registryEntry.maxUsers : 0,
                 totalDownloads = extension && extension.totalDownloads? extension.totalDownloads : 0,
                 dailyDownloads = registryEntry ? registryEntry.dailyDownloads : 0,
                 badgeHolder;
@@ -108,12 +112,16 @@ define(function (require, exports, module){
                 str_downloads: locale.get('downloads'),
                 str_more: locale.get('more'),
                 str_daily: locale.get('daily'),
+                str_online: locale.get('onlineTitle'),
+                str_max_users: locale.get('maxUsersTitle'),
                 str_click_more: locale.get('click-more') + ' ' + registryEntry? registryEntry.title : '',
                 id: id,
                 daily: dailyDownloads ? dailyDownloads : '',
                 path: config.root,
                 stars: stars,
-                forks: forks
+                forks: forks,
+                online: online,
+                max_users: maxUsers
             }));
 
             if (registryEntry.authorAvatar){
@@ -129,6 +137,8 @@ define(function (require, exports, module){
             //hide forks counter for extensions without forks on GitHub
             if (!forks) { $t.find('.ext-forks').hide(); }
 
+            if (!online) { $t.find('.ext-users').hide(); }
+
             if (registryEntry.badge && registryEntry.badge.length > 0){
                 badgeHolder = $('<div class="ext-badges"></div>');
                 $t.find('.ext-info').append(badgeHolder);
@@ -143,6 +153,10 @@ define(function (require, exports, module){
             $t.attr('data-extension-yesterday', dailyDownloads? dailyDownloads : 0);
             $t.attr('data-extension-stars', stars);
             $t.attr('data-extension-forks', forks);
+
+            if (ThemeAchievement.extensions[id]){
+                $t.attr('data-extension-theme', true);
+            }
         });
     }
 
@@ -273,12 +287,29 @@ define(function (require, exports, module){
                 return -parseInt($(el).attr('data-extension-forks'));
             });
         }
-    }
+    };
+
+    var workaroundHandlers = {
+        'default': function(elements){
+            $(elements).show();
+        },
+        'themes': function(elements){
+            _.each(elements, function(element){
+                var $e = $(element);
+                if ($e.attr('data-extension-theme') != 'true'){
+                    $e.hide();
+                }
+            });
+        }
+    };
 
     function sort(criteria){
         var handler = sortHandlers[criteria],
+            workaroundHandler = workaroundHandlers[criteria] || workaroundHandlers.default;
             holder = $(dialogId).find('.extension-list.active tbody'),
             elements = holder.find('tr');
+
+        workaroundHandler(elements);
 
         if (typeof handler !== 'function'){ return; }
 

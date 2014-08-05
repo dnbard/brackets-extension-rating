@@ -36,5 +36,7 @@ require('./lib/services/scheduler').init();
 //Start cache control
 require('./lib/services/cacheControl').init();
 
+require('./lib/services/externalServices').init();
+
 // Expose app
 exports = module.exports = app;

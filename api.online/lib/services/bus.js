@@ -13,9 +13,13 @@ function getInstance(){
 
 function init(instance){
     instance.list = {
-        REGISTRY:{
-            UPDATED:'Registry updated',
-            CACHED: 'Registry cached'
+        COUNTER: {
+            SAVE: 'counter.save'
+        },
+        APPLICATION:{
+            SAVE: 'application.save',
+            ZERO_ONLINE: 'application.zero_online',
+            MAX_USERS: 'application.max_users'
         }
     }
 }
