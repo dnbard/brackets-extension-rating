@@ -44,7 +44,7 @@ span.ext-daily{
 }
 
 .ext-badges > .ext-badge-100k{
-    background: linear-gradient(to bottom, #1e5799 0%,#1e5799 80%, yellow 80%, yellow 100%);
+    background: #ff9900;
 }
 
 .ext-badges > .ext-badge-stars{
