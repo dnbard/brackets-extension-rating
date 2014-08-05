@@ -37,7 +37,7 @@ define(function(require, exports){
             throw new Error('Invalid argument');
         }
 
-        return (localStorage.getItem(keyId) || { })[appToken];
+        return JSON.parse(localStorage.getItem(keyId) || '{ }')[appToken];
     }
 
     function saveUserId(id, appToken, keyId){
@@ -47,7 +47,7 @@ define(function(require, exports){
 
         var obj = (localStorage.getItem(keyId) || { });
         obj[appToken] = id;
-        localStorage.setItem(keyId, obj);
+        localStorage.setItem(keyId, JSON.stringify(obj));
     }
 
     exports.init = init;
