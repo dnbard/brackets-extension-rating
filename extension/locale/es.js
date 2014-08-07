@@ -38,6 +38,9 @@ define(function (require, exports, module){
         badgeForksTitle: 'El complemento con m\u00e1s forks en GitHub', //0.4.0
         /*END of BADGES*/
 
+        onlineTitle: 'El número de usuarios que usan este complemento ahora mismo. Pulsa para conocer cómo ha sido calculado este número.', //0.5.0
+        maxUsersTitle: 'El recuento general de usuarios del complemento', //0.5.0
+
         //Detailed info about ##
         'click-more': 'Informaci\u00f3n detallada sobre', //0.3.0
 

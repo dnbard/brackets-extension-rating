@@ -38,6 +38,9 @@ define(function (require, exports, module){
         badgeForksTitle: 'Extensia cu cele mai multe Fork pe GitHub', //0.4.0
         /*END of BADGES*/
 
+        onlineTitle: 'Num\u0103rul utilizatorilor care folosesc extensia \u00een acest moment. Apas\u0103 aici pentru a afla cum a fost calculat acest num\u0103r', //0.5.0
+        maxUsersTitle: 'Num\u0103rul general al utilizatorilor extensiei', //0.5.0
+
         //Detailed info about ##
         'click-more': 'Informa\u021bie detaliat\u0103 despre', //0.3.0
 
