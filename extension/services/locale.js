@@ -56,4 +56,10 @@ define(function (require, exports, module){
             }
         }
 
-        if (t
+        if (typeof result === 'function'){
+            return result(params);
+        }
+
+        return result;
+    }
+});

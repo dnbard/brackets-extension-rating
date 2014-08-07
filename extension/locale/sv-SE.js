@@ -5,7 +5,7 @@
 
 define(function (require, exports, module){
     module.exports = {
-        downloads: 'nedladdningar',
+        downloads: 'Nedladdningar',
         hide: 'Dölj',
         more: 'mer',
         oneMoreVersion: '<div>...och ytterligare en version.</div>',
