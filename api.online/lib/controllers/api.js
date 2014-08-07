@@ -4,25 +4,35 @@ var mongoose = require('mongoose'),
     _ = require('lodash'),
     crypto = require('crypto'),
     counter = require('../services/counter'),
-    applications = require('../services/applications');
+    applications = require('../services/applications'),
+    usersCache = require('../services/usersCache');
 
 function tick(req, res){
+    //WARNING: this code should be used on Heroku alike hosting providers
+    //if you use own hosting then it is very likely that you need to
+    //rewrite the mechanic of ip acquirement
     var ipAddr = req.headers["x-forwarded-for"],
         app = req.params.app,
+        userId = req.params.user,
         user, list;
 
-    if (ipAddr){
-        list = ipAddr.split(",");
-        ipAddr = list[list.length-1];
+    if (userId && usersCache.check(userId)){
+        user = userId;
     } else {
-        ipAddr = req.ip;
-    }
+        if (ipAddr){
+            list = ipAddr.split(",");
+            ipAddr = list[list.length-1];
+        } else {
+            ipAddr = req.ip;
+        }
 
-    user = crypto.createHash('md5').update(ipAddr).digest('hex');
+        user = crypto.createHash('md5').update(ipAddr).digest('hex');
+        usersCache.add(user);
+    }
 
     counter.count(app, user)
         .then(function(result){
-            res.status(200).send('OK');
+            res.status(200).send(user);
         }, function(){
             res.status(400).send('ERROR');
         });

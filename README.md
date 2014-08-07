@@ -11,11 +11,16 @@
 Right now Extension Rating is translated in English and Italian languages. You can simply add translation to your language. Please [read Localization Support ticket](https://github.com/dnbard/brackets-extension-rating/issues/3) and submit translation files in individual pull request.
 
 ##Patch notes
-### v0.3.2 -> v0.4.0
+### v0.5.0
+* Ability to sort by themes
+* Show online and maximum users counters for selected extensions
+* Some infrastructure changes
+
+### v0.4.0
 * Display stars and forks counter from GitHub repository
 * Display authors avatars from GitHub
 * Badges for most popular extension at GitHub
 * Sort extensions by GitHub ratings
 * All badges now have tooltips
 
-*Note: all statistics from GitHub are processed with separate Web Worker and that information may be a little outdated*
+*Note: all statistics are processed with separate Web Worker and that information may be a little outdated by ~1 hour*
