@@ -36,6 +36,8 @@ define(function (require, exports, module){
 
         badgeStarsTitle: 'Cea mai popular\u0103 extensie pe GitHub', //0.4.0
         badgeForksTitle: 'Extensia cu cele mai multe Fork pe GitHub', //0.4.0
+        
+        themeTitle: 'Tem\u0103 Brackets',
         /*END of BADGES*/
 
         onlineTitle: 'Num\u0103rul utilizatorilor care folosesc extensia \u00een acest moment. Apas\u0103 aici pentru a afla cum a fost calculat acest num\u0103r', //0.5.0
