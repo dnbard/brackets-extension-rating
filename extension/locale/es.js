@@ -17,6 +17,7 @@ define(function (require, exports, module){
         daily: 'descargas ayaer', //0.3.0
         stars: 'Estrellas', //0.4.0
         forks: 'Forks', //0.4.0
+        themes: 'Temas', //0.5.0
 
         /*BADGES - 0.3.2*/
         badgeAdobe: 'Adobe',
@@ -36,7 +37,12 @@ define(function (require, exports, module){
 
         badgeStarsTitle: 'El complemento m\u00e1s popular de GitHub', //0.4.0
         badgeForksTitle: 'El complemento con m\u00e1s forks en GitHub', //0.4.0
+        
+        themeTitle: 'Tema Brackets',
         /*END of BADGES*/
+
+        onlineTitle: 'El número de usuarios que usan este complemento ahora mismo. Pulsa para conocer cómo ha sido calculado este número.', //0.5.0
+        maxUsersTitle: 'El recuento general de usuarios del complemento', //0.5.0
 
         //Detailed info about ##
         'click-more': 'Informaci\u00f3n detallada sobre', //0.3.0

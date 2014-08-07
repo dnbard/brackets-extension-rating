@@ -17,6 +17,7 @@ define(function (require, exports, module){
         daily: 'descarregues ahir', //0.3.0
         stars: 'Estrelles', //0.4.0
         forks: 'Forks', //0.4.0
+        themes: 'Temes', //0.5.0
 
         /*BADGES - 0.3.2*/
         badgeAdobe: 'Adobe',
@@ -36,7 +37,12 @@ define(function (require, exports, module){
 
         badgeStarsTitle: 'El complement m\u00e9s popular de GitHub', //0.4.0
         badgeForksTitle: 'El complement amb m\u00e9s forks en GitHub', //0.4.0
+        
+        themeTitle: 'Tema Brackets',
         /*END of BADGES*/
+
+        onlineTitle: "El nombre d'usuaris que fan servir aquest complement ara mateix. Clica per con\u00e8ixer com ha estat calculat aquest nombre.", //0.5.0
+        maxUsersTitle: 'El recompte general dels usuaris del complement', //0.5.0
 
         //Detailed info about ##
         'click-more': 'Informaci\u00f3 detallada sobre', //0.3.0
