@@ -5,55 +5,55 @@
 
 define(function (require, exports, module){
     module.exports = {
-        downloads: 'Downloads',
-        hide: 'Hide',
-        more: 'more',
-        oneMoreVersion: '<div>... and one more version.</div>',
-        sortby: 'Sort by ...',
-        author: 'Author',
-        update: 'Last Update',
-        trending: 'Trending', //0.3.0
+        downloads: 'İndirmeler',
+        hide: 'Gizle',
+        more: 'daha fazla',
+        oneMoreVersion: '<div>... ve diğer versiyonlar.</div>',
+        sortby: 'Sırala ...',
+        author: 'Geliştirici',
+        update: 'Son Güncelleme',
+        trending: 'Gündem', //0.3.0
         name: 'Name',
-        daily: 'downloads yesterday', //0.3.0
-        stars: 'Stars', //0.4.0
-        forks: 'Forks', //0.4.0
-        themes: 'Themes', //0.5.0
+        daily: 'dün indirme', //0.3.0
+        stars: 'Yıldız', //0.4.0
+        forks: 'Çatal', //0.4.0
+        themes: 'Temalar', //0.5.0
 
         /*BADGES - 0.3.2*/
         badgeAdobe: 'Adobe',
-        badgeAdobeTitle: 'Extension from Adobe',
+        badgeAdobeTitle: 'Adobe Uzantısı',
 
-        badge100k: '100k Downloads',
-        badge100kTitle: 'First extension that had 100k downloads',
+        badge100k: '100bin İndirme',
+        badge100kTitle: 'İlk uzantı 10bin indirme',
 
-        badgeTop: 'Top',
-        badgeTopTitle: 'Most popular extension',
+        badgeTop: 'Popüler',
+        badgeTopTitle: 'En popüler uzantılar',
 
-        badgeTrend: 'Trending',
-        badgeTrendTitle: 'Most trending extension',
+        badgeTrend: 'Gündem',
+        badgeTrendTitle: 'Gündemdeki uzantılar',
 
-        badgeNew: 'New',
-        badgeNewTitle: 'New extension',
+        badgeNew: 'Yeni',
+        badgeNewTitle: 'Yeni uzantılar',
 
-        badgeStarsTitle: 'Most popular extension on GitHub', //0.4.0
-        badgeForksTitle: 'Most forked extension on GitHub', //0.4.0
+        badgeStarsTitle: 'GitHub\'ta en popüler uzantı', //0.4.0
+        badgeForksTitle: 'GitHub\'ta en çok çatallanan uzantı', //0.4.0
 
-        themeTitle: 'Brackets Theme',
+        themeTitle: 'Brackets Tema',
         /*END of BADGES*/
 
-        onlineTitle: 'Number of users that is using this extension right now. Click to find out how this number was calculated.', //0.5.0
-        maxUsersTitle: 'Overall count of extension\'s users', //0.5.0
+        onlineTitle: 'Bu uzantıyı kullanan kullanıcıların sayısı. Nasıl hesaplandığını öğrenmek için tıklayın.', //0.5.0
+        maxUsersTitle: 'Uzantıyı kullanan sayısı', //0.5.0
 
         //Detailed info about ##
-        'click-more': 'Detailed info about', //0.3.0
+        'click-more': 'Hakkında detaylı bilgi', //0.3.0
 
         //Online for ## days, ## downloads per day
-        statusTemplate: '<div>Online for <b>${days} days</b>, <b>${daily} ${str_daily}</b>, <b>${dpd} downloads per day</b></div>',
+        statusTemplate: '<div>Çevrim içi <b>${days} gün</b>, <b>${daily} ${str_daily}</b>, <b>${dpd} bir günde indirme</b></div>',
 
         //v ## from ## - ## downloads</div>
-        versionTemplate: '<div>v ${version} from ${date} - ${downloads} downloads</div>',
+        versionTemplate: '<div>v ${version} - ${date} - ${downloads} indirme</div>',
 
         //... and ## more versions
-        moreVersionsTemplate: '<div>... and ${count} more versions</div>'
+        moreVersionsTemplate: '<div>... ve ${count} diğer versiyon</div>'
     }
 });
