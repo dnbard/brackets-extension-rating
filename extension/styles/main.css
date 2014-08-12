@@ -7,6 +7,12 @@ select.ext_rating {
     border: 1px solid #b2b5b5;
 }
 
+select.ext_rating:focus {
+    border: 1px solid #2893ef;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06), 0 0 0 1px #94ceff;
+    outline: none;
+}
+
 span.ext-daily{
     color: #888;
     padding: 0px 1px;
