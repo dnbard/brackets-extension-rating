@@ -24,7 +24,7 @@ define(function (require, exports, module){
         badgeAdobeTitle: 'Adobe Uzantısı',
 
         badge100k: '100bin İndirme',
-        badge100kTitle: 'İlk uzantı 10bin indirme',
+        badge100kTitle: 'İlk uzantı 100bin indirme',
 
         badgeTop: 'Popüler',
         badgeTopTitle: 'En popüler uzantılar',
