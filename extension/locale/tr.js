@@ -13,7 +13,7 @@ define(function (require, exports, module){
         author: 'Geliştirici',
         update: 'Son Güncelleme',
         trending: 'Gündem', //0.3.0
-        name: 'Name',
+        name: 'Ad',
         daily: 'dün indirme', //0.3.0
         stars: 'Yıldız', //0.4.0
         forks: 'Çatal', //0.4.0
