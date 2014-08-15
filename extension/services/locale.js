@@ -6,6 +6,7 @@ define(function (require, exports, module){
         catalanLanguage = require('../locale/ca-ES'),
         swedishLanguage = require('../locale/sv-SE'),
         turkishLanguage = require('../locale/tr'),
+        germanLanguage = require('../locale/de-DE'),
         dictionaries = {
             'en': englishLanguage,
             'en-GB': englishLanguage,
@@ -18,10 +19,12 @@ define(function (require, exports, module){
             'es-ES' : spanishLanguage,
             'ca' : catalanLanguage,
             'ca-ES' : catalanLanguage,
-			'sv' : swedishLanguage,
-            'sv-SE' : swedishLanguage,			
+            'sv' : swedishLanguage,
+            'sv-SE' : swedishLanguage,
             'tr' : turkishLanguage,
-            'tr-TR' : turkishLanguage
+            'tr-TR' : turkishLanguage,
+            'de' : germanLanguage,
+            'de-DE' : germanLanguage
             //More locals to add here
     },
         _ = require('../vendor/lodash.min'),

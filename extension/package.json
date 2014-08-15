@@ -9,5 +9,6 @@
     "engines": {
         "brackets": ">=0.42.0"
     },
-    "keywords": ["extensions", "rating", "github", "downloads"]
+    "keywords": ["extensions", "rating", "github", "downloads"],
+    "i18n": ["en", "en-GB", "en-US", "it", "it-IT", "ro", "ro-RO", "es", "es-ES", "ca", "ca-ES", "sv", "sv-SE", "tr", "tr-TR", "de", "de-DE"]
 }
