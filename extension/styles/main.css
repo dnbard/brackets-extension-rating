@@ -3,14 +3,6 @@ select.ext_rating {
     right: 275px;
     width: 100px;
     top: 15px;
-    border-radius: 3px;
-    border: 1px solid #b2b5b5;
-}
-
-select.ext_rating:focus {
-    border: 1px solid #2893ef;
-    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06), 0 0 0 1px #94ceff;
-    outline: none;
 }
 
 span.ext-daily{
@@ -31,6 +23,10 @@ span.ext-daily{
     font-size: 10px;
     font-weight: 500;
     vertical-align: bottom;
+}
+
+.dark .ext-badges > .ext-badge {
+    color: black;
 }
 
 .ext-badges > .ext-badge-top{
@@ -98,4 +94,8 @@ span.ext-daily{
 
 .ext-info {
     padding-bottom: 20px !important;
+}
+
+.dark .extension-list .muted {
+    color: #777 !important;
 }
