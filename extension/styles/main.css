@@ -83,6 +83,7 @@ span.ext-daily{
 }
 
 .ext-avatar{
+    background: #f0f0f0;
     margin-right: 5px;
     border-radius: 4px;
     width: 20px;
