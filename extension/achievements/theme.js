@@ -16,7 +16,6 @@ define(function(require, exports, module){
                 if (bracketsExtension && bracketsExtension.metadata && bracketsExtension.metadata.theme){
                     extensionsAffected[extension._id] = true;
                     this.writeBadge(null, extension);
-                    console.log(extension._id);
                 }
             }, this));
         }
