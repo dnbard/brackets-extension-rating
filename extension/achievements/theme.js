@@ -15,14 +15,26 @@ define(function(require, exports, module){
                 var bracketsExtension = ExtensionsService.get(extension._id);
                 if (bracketsExtension && bracketsExtension.metadata && bracketsExtension.metadata.theme){
                     extensionsAffected[extension._id] = true;
-                    this.writeBadge(null, extension);
+                    this.writeBadge(bracketsExtension.metadata.theme.dark ? 'dark' : 'light', extension);
                 }
             }, this));
         }
 
-        this.getTag = function(rating, element){
+        this.getTag = function(type, element){
+            var badge = null;
+
+            if (type === 'dark'){
+                //TODO: change to dark icon
+                badge = image;
+            } else if (type === 'light'){
+                //TODO: change to light icon
+                badge = image;
+            } else {
+                badge = image;
+            }
+
             return _.template('<span title="${title}" class="ext-badge ext-badge-theme"><img src="${badge}" /></span>',{
-                badge: image,
+                badge: badge,
                 title: locale.get('themeTitle')
             });
         }
