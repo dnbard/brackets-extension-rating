@@ -8,6 +8,7 @@ define(function (require, exports, module){
         turkishLanguage = require('../locale/tr'),
         ukrainianLanguage = require('../locale/uk'),
         germanLanguage = require('../locale/de-DE'),
+        frenchLanguage = require('../locale/fr'),
         russianLanguage = require('../locale/ru'),
         dictionaries = {
             'en': englishLanguage,
@@ -29,6 +30,8 @@ define(function (require, exports, module){
             'uk-UA' : ukrainianLanguage,
             'de' : germanLanguage,
             'de-DE' : germanLanguage,
+            'fr' : frenchLanguage,
+            'fr-FR' : frenchLanguage,
             'ru' : russianLanguage,
             'ru-RU' : russianLanguage
             //More locals to add here
