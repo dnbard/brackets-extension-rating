@@ -10,5 +10,5 @@
         "brackets": ">=0.43.0"
     },
     "keywords": ["extensions", "rating", "github", "downloads"],
-    "i18n": ["en", "en-GB", "it", "ro", "es", "sv", "tr", "de", "uk"]
+    "i18n": ["en", "en-GB", "de", "es", "it", "ro", "ru", "sv", "tr", "uk"]
 }
