@@ -9,7 +9,6 @@ define(function (require, exports, module){
         downloadsTemplate = require('text!../templates/downloads.html'),
         ThemeAchievement = require('../achievements/theme'),
         selectTemplate = _.template(require('text!../templates/sortButton.html'),{
-            sortby: locale.get('sortby'),
             author: locale.get('author'),
             downloads: locale.get('downloads'),
             update: locale.get('update'),
@@ -266,11 +265,11 @@ define(function (require, exports, module){
                 return $(el).find('.ext-name').text();
             });
         },
-        'update': function(elements){
+        /*'update': function(elements){
             return _.sortBy(elements, function(el){
                 return - new Date($(el).find('.ext-date').text().replace(' - ', ''));
             });
-        },
+        },*/
         'trending' : function(elements){
             return elements = _.sortBy(elements, function(el){
                 return -parseInt($(el).attr('data-extension-yesterday'));
@@ -299,6 +298,9 @@ define(function (require, exports, module){
                     $e.hide();
                 }
             });
+        },
+        'update': function(){
+            $('ul.nav > li.active > a').click();
         }
     };
 
