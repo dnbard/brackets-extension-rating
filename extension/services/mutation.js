@@ -48,7 +48,7 @@ define(function (require, exports, module){
             mutateTabButtons(target);
 
             token = setInterval(function(){
-                var extensions = target.find('#registry tr, #installed tr'),
+                var extensions = target.find('#registry tr, #installed tr, #themes tr'),
                     extensionCount = extensions.length;
                 if (extensionCount < 200 || waitForRegistry){
                     return;
