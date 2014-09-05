@@ -16,8 +16,7 @@ define(function (require, exports, module){
             trending: locale.get('trending'),
             name: locale.get('name'),
             stars: locale.get('stars'),
-            forks: locale.get('forks'),
-            themes: locale.get('themes')
+            forks: locale.get('forks')
         });
 
     function init(){
