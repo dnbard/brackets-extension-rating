@@ -57,6 +57,11 @@ define(function (require, exports, module){
                 clearInterval(token);
                 mutateExistingExtensions(extensions);
             }, 100);
+
+            //Set default sorting filter on tab change
+            target.find('ul.nav > li > a').on('click', function(){
+                target.find('select.ext_rating').val('update');
+            });
         }
     }
 
