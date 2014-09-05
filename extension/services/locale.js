@@ -8,6 +8,7 @@ define(function (require, exports, module){
         turkishLanguage = require('../locale/tr'),
         ukrainianLanguage = require('../locale/uk'),
         germanLanguage = require('../locale/de-DE'),
+        frenchLanguage = require('../locale/fr'),
         dictionaries = {
             'en': englishLanguage,
             'en-GB': englishLanguage,
@@ -27,7 +28,9 @@ define(function (require, exports, module){
             'uk' : ukrainianLanguage,
             'uk-UA' : ukrainianLanguage,
             'de' : germanLanguage,
-            'de-DE' : germanLanguage
+            'de-DE' : germanLanguage,
+            'fr' : frenchLanguage,
+            'fr-FR' : frenchLanguage
             //More locals to add here
     },
         _ = require('../vendor/lodash.min'),
