@@ -62,17 +62,17 @@ span.ext-daily{
     padding: 0px;
 }
 
-.fa{
+.ext-version .fa{
     font-size: 14px;
 }
 
-.fa-star {
+.ext-version .fa-star {
     font-size: 11px;
     position: relative;
     top: 1px;
 }
 
-.fa-code-fork {
+.ext-version .fa-code-fork {
     position: relative;
     top: 2px;
 }
