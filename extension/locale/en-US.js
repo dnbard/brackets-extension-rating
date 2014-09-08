@@ -54,6 +54,10 @@ define(function (require, exports, module){
         versionTemplate: '<div>v ${version} from ${date} - ${downloads} downloads</div>',
 
         //... and ## more versions
-        moreVersionsTemplate: '<div>... and ${count} more versions</div>'
+        moreVersionsTemplate: '<div>... and ${count} more versions</div>',
+
+        //0.5.4
+        colorDark: 'dark',
+        colorLight: 'light'
     }
 });

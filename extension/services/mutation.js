@@ -9,15 +9,13 @@ define(function (require, exports, module){
         downloadsTemplate = require('text!../templates/downloads.html'),
         ThemeAchievement = require('../achievements/theme'),
         selectTemplate = _.template(require('text!../templates/sortButton.html'),{
-            sortby: locale.get('sortby'),
             author: locale.get('author'),
             downloads: locale.get('downloads'),
             update: locale.get('update'),
             trending: locale.get('trending'),
             name: locale.get('name'),
             stars: locale.get('stars'),
-            forks: locale.get('forks'),
-            themes: locale.get('themes')
+            forks: locale.get('forks')
         });
 
     function init(){
@@ -50,7 +48,7 @@ define(function (require, exports, module){
             mutateTabButtons(target);
 
             token = setInterval(function(){
-                var extensions = target.find('#registry tr, #installed tr'),
+                var extensions = target.find('#registry tr, #installed tr, #themes tr'),
                     extensionCount = extensions.length;
                 if (extensionCount < 200 || waitForRegistry){
                     return;
@@ -59,6 +57,11 @@ define(function (require, exports, module){
                 clearInterval(token);
                 mutateExistingExtensions(extensions);
             }, 100);
+
+            //Set default sorting filter on tab change
+            target.find('ul.nav > li > a').on('click', function(){
+                target.find('select.ext_rating').val('update');
+            });
         }
     }
 
@@ -267,11 +270,11 @@ define(function (require, exports, module){
                 return $(el).find('.ext-name').text();
             });
         },
-        'update': function(elements){
+        /*'update': function(elements){
             return _.sortBy(elements, function(el){
                 return - new Date($(el).find('.ext-date').text().replace(' - ', ''));
             });
-        },
+        },*/
         'trending' : function(elements){
             return elements = _.sortBy(elements, function(el){
                 return -parseInt($(el).attr('data-extension-yesterday'));
@@ -300,6 +303,9 @@ define(function (require, exports, module){
                     $e.hide();
                 }
             });
+        },
+        'update': function(){
+            $('ul.nav > li.active > a').click();
         }
     };
 

@@ -3,11 +3,12 @@
     "title": "Extensions Rating",
     "description": "Shows extension's downloads count(daily, overall, average and per version) and GitHub stats(stars and forks). Find most usable and popular extensions for Brackets via badges system! Sort extensions and find themes!",
     "homepage": "https://github.com/dnbard/brackets-extension-rating",
-    "version": "0.5.0",
+    "version": "0.5.3",
     "author": "Alex Bardanov <dnbard@gmail.com>",
     "license": "MIT",
     "engines": {
-        "brackets": ">=0.42.0"
+        "brackets": ">=0.43.0"
     },
-    "keywords": ["extensions", "rating", "github", "downloads"]
+    "keywords": ["extensions", "rating", "github", "downloads"],
+    "i18n": ["en", "en-GB", "de", "es", "it", "ro", "ru", "sv", "tr", "uk"]
 }

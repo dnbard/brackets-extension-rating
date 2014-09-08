@@ -1,10 +1,15 @@
 define(function (require, exports, module){
-<<<<<<< HEAD
     var englishLanguage = require('../locale/en-US'),
         italianLanguage = require('../locale/it'),
         romanianLanguage = require('../locale/ro'),
         spanishLanguage = require('../locale/es'),
         catalanLanguage = require('../locale/ca-ES'),
+        swedishLanguage = require('../locale/sv-SE'),
+        turkishLanguage = require('../locale/tr'),
+        ukrainianLanguage = require('../locale/uk'),
+        germanLanguage = require('../locale/de-DE'),
+        frenchLanguage = require('../locale/fr'),
+        russianLanguage = require('../locale/ru'),
         dictionaries = {
             'en': englishLanguage,
             'en-GB': englishLanguage,
@@ -16,14 +21,20 @@ define(function (require, exports, module){
             'es' : spanishLanguage,
             'es-ES' : spanishLanguage,
             'ca' : catalanLanguage,
-            'ca-ES' : catalanLanguage
+            'ca-ES' : catalanLanguage,
+            'sv' : swedishLanguage,
+            'sv-SE' : swedishLanguage,
+            'tr' : turkishLanguage,
+            'tr-TR' : turkishLanguage,
+            'uk' : ukrainianLanguage,
+            'uk-UA' : ukrainianLanguage,
+            'de' : germanLanguage,
+            'de-DE' : germanLanguage,
+            'fr' : frenchLanguage,
+            'fr-FR' : frenchLanguage,
+            'ru' : russianLanguage,
+            'ru-RU' : russianLanguage
             //More locals to add here
-=======
-    var dictionaries = {
-        'en-US': require('../locale/en-US'),
-        'it-IT': require('../locale/it-IT')
-        //More locals to add here
->>>>>>> upstream/pr/18
     },
         _ = require('../vendor/lodash.min'),
         defaultLocale = 'en-US';

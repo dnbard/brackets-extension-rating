@@ -3,8 +3,6 @@ select.ext_rating {
     right: 275px;
     width: 100px;
     top: 15px;
-    border-radius: 3px;
-    border: 1px solid #b2b5b5;
 }
 
 span.ext-daily{
@@ -25,6 +23,10 @@ span.ext-daily{
     font-size: 10px;
     font-weight: 500;
     vertical-align: bottom;
+}
+
+.dark .ext-badges > .ext-badge {
+    color: black;
 }
 
 .ext-badges > .ext-badge-top{
@@ -60,17 +62,17 @@ span.ext-daily{
     padding: 0px;
 }
 
-.fa{
+.ext-version .fa{
     font-size: 14px;
 }
 
-.fa-star {
+.ext-version .fa-star {
     font-size: 11px;
     position: relative;
     top: 1px;
 }
 
-.fa-code-fork {
+.ext-version .fa-code-fork {
     position: relative;
     top: 2px;
 }
@@ -81,6 +83,7 @@ span.ext-daily{
 }
 
 .ext-avatar{
+    background: #f0f0f0;
     margin-right: 5px;
     border-radius: 4px;
     width: 20px;
@@ -92,4 +95,8 @@ span.ext-daily{
 
 .ext-info {
     padding-bottom: 20px !important;
+}
+
+.dark .extension-list .muted {
+    color: #777 !important;
 }
