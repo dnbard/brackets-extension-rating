@@ -55,5 +55,9 @@ define(function (require, exports, module){
 
         //... and ## more versions
         moreVersionsTemplate: '<div>... i ${count} m&#233;s versions</div>'
+        
+        //0.5.4
+        colorDark: 'fosc',
+        colorLight: 'clar'
     }
 });
