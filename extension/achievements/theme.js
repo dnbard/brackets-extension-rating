@@ -23,21 +23,23 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(type, element){
-            var badge = null;
+            var badge = null, color;
 
             if (type === 'dark'){
-                //TODO: change to dark icon
                 badge = dark;
+                color = 'colorDark';
             } else if (type === 'light'){
-                //TODO: change to light icon
                 badge = light;
+                color = 'colorLight';
             } else {
                 badge = image;
+                color = '';
             }
 
-            return _.template('<span title="${title}" class="ext-badge ext-badge-theme"><img src="${badge}" /></span>',{
+            return _.template('<span title="${title}${color}" class="ext-badge ext-badge-theme"><img src="${badge}" /></span>',{
                 badge: badge,
-                title: locale.get('themeTitle')
+                title: locale.get('themeTitle'),
+                color: color ? '(' + locale.get(color) + ')' : ''
             });
         }
     }
