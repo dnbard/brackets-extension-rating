@@ -59,8 +59,12 @@ define(function (require, exports, module){
             }, 100);
 
             //Set default sorting filter on tab change
-            target.find('ul.nav > li > a').on('click', function(){
-                target.find('select.ext_rating').val('update');
+            target.find('ul.nav > li > a').on('click', function(event){
+                if ($(event.target).hasClass('installed')){
+                    target.find('select.ext_rating').val('name');
+                } else {
+                    target.find('select.ext_rating').val('update');
+                }
             });
         }
     }
@@ -74,7 +78,7 @@ define(function (require, exports, module){
     function mutateExistingExtensions(targets){
         if (targets.length === 0) return;
 
-        $('#registry, #installed').click(function(event){
+        $('#registry tr, #installed tr, #themes tr').click(function(event){
             var $t = $(event.target),
                 $parent = $(event.currentTarget);
 
@@ -168,7 +172,7 @@ define(function (require, exports, module){
         if (parent){
             parent.find('tr').show();
         } else {
-            $('#registry tr, #installed tr').show();
+            $('#registry tr, #installed tr, #themes tr').show();
         }
     }
 
@@ -248,7 +252,7 @@ define(function (require, exports, module){
 
         $select.on('change', function(event){
             if (typeof this.value === 'string'){
-                sort(this.value);
+                sort(this.value, target);
             }
         });
         $header.append($select);
@@ -256,7 +260,7 @@ define(function (require, exports, module){
 
     var sortHandlers = {
         'downloads': function(elements){
-            return elements = _.sortBy(elements, function(el){
+            return _.sortBy(elements, function(el){
                 return -parseInt($(el).attr('data-extension-loads'));
             });
         },
@@ -270,23 +274,23 @@ define(function (require, exports, module){
                 return $(el).find('.ext-name').text();
             });
         },
-        /*'update': function(elements){
+        'update': function(elements){
             return _.sortBy(elements, function(el){
                 return - new Date($(el).find('.ext-date').text().replace(' - ', ''));
             });
-        },*/
+        },
         'trending' : function(elements){
-            return elements = _.sortBy(elements, function(el){
+            return _.sortBy(elements, function(el){
                 return -parseInt($(el).attr('data-extension-yesterday'));
             });
         },
         'stars' : function(elements){
-            return elements = _.sortBy(elements, function(el){
+            return _.sortBy(elements, function(el){
                 return -parseInt($(el).attr('data-extension-stars'));
             });
         },
         'forks' : function(elements){
-            return elements = _.sortBy(elements, function(el){
+            return _.sortBy(elements, function(el){
                 return -parseInt($(el).attr('data-extension-forks'));
             });
         }
@@ -295,6 +299,7 @@ define(function (require, exports, module){
     var workaroundHandlers = {
         'default': function(elements){
             $(elements).show();
+            return true;
         },
         'themes': function(elements){
             _.each(elements, function(element){
@@ -304,20 +309,37 @@ define(function (require, exports, module){
                 }
             });
         },
-        'update': function(){
-            $('ul.nav > li.active > a').click();
+        'update': function(elements, target){
+            if (target.find('.extension-list.active').attr('id') !== 'installed'){
+                $('ul.nav > li.active > a').click();
+                return false;
+            } else {
+                return true;
+            }
+        },
+        'name': function(elements, target){
+            if (target.find('.extension-list.active').attr('id') === 'installed'){
+                $('ul.nav > li.active > a').click();
+                return false;
+            } else {
+                return true;
+            }
         }
     };
 
-    function sort(criteria){
+    function sort(criteria, target){
         var handler = sortHandlers[criteria],
             workaroundHandler = workaroundHandlers[criteria] || workaroundHandlers.default;
             holder = $(dialogId).find('.extension-list.active tbody'),
             elements = holder.find('tr');
 
-        workaroundHandler(elements);
+        if (!workaroundHandler(elements, target)){
+            return;
+        }
 
-        if (typeof handler !== 'function'){ return; }
+        if (typeof handler !== 'function'){
+            return;
+        }
 
         holder.empty();
         elements = handler(elements);
