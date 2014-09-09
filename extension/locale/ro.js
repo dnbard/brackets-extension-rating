@@ -53,7 +53,7 @@ define(function (require, exports, module){
         versionTemplate: '<div>v ${version} din ${date} - ${downloads} desc&#259;rc&#259;ri</div>',
 
         //... and ## more versions
-        moreVersionsTemplate: '<div>... &#537;i ${count} mai multe versiuni</div>'
+        moreVersionsTemplate: '<div>... &#537;i ${count} mai multe versiuni</div>',
         
         //0.5.4
         colorDark: '\u00eentunecat',
