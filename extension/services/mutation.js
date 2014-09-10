@@ -78,7 +78,7 @@ define(function (require, exports, module){
     function mutateExistingExtensions(targets){
         if (targets.length === 0) return;
 
-        $('#registry tr, #installed tr, #themes tr').click(function(event){
+        $('#registry, #installed, #themes').click(function(event){
             var $t = $(event.target),
                 $parent = $(event.currentTarget);
 
