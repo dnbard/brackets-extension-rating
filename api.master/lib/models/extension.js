@@ -19,7 +19,8 @@ var ExtensionSchema = new Schema({
     downloads: [{
         count: Number,
         timestamp: { type: Date, default: Date.now }
-    }]
+    }],
+    repository: String
 });
 
 var Extension = mongoose.model('Extension', ExtensionSchema),

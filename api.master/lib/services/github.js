@@ -40,7 +40,7 @@ function onRemaining(remaining, registry){
             if (typeof extension.homepage !== 'string'){ return true; }
 
             var id = extension._id,
-                repository = extension.homepage.replace('github.com', 'api.github.com/repos'),
+                repository = (extension.repository || extension.homepage).replace('github.com', 'api.github.com/repos'),
                 today = new Date().getDate();
 
             if (remaining > 0){
@@ -50,7 +50,7 @@ function onRemaining(remaining, registry){
                     extension.forks = data.forks || 0;
                     extension.githubTimestamp = new Date().toISOString();
                     if (data.owner && typeof data.owner.avatar_url === 'string'){
-                        extension.authorAvatar = data.owner.avatar_url
+                        extension.authorAvatar = data.owner.avatar_url;
                     }
 
                     Extension.updateGitHub({
