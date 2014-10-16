@@ -1,0 +1,16 @@
+{
+  "name": "maintenance.master",
+  "version": "0.0.0",
+  "description": "Maintenance script for master database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Bardanov",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^3.8.17",
+    "q": "^1.0.1",
+    "lodash": "^2.4.1"
+  }
+}
