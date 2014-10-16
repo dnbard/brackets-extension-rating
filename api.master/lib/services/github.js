@@ -40,7 +40,7 @@ function onRemaining(remaining, registry){
             if (typeof extension.homepage !== 'string'){ return true; }
 
             var id = extension._id,
-                repository = extension.repository || extension.homepage.replace('github.com', 'api.github.com/repos'),
+                repository = (extension.repository || extension.homepage).replace('github.com', 'api.github.com/repos'),
                 today = new Date().getDate();
 
             if (remaining > 0){
