@@ -1,12 +1,16 @@
 'use strict';
 
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV!=='development'){
+    require('newrelic');
+}
+
 var express = require('express'),
     path = require('path'),
     fs = require('fs'),
     mongoose = require('mongoose');
-
-// Set default node environment to development
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var config = require('./lib/config/config');
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
