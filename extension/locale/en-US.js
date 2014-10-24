@@ -58,6 +58,9 @@ define(function (require, exports, module){
 
         //0.5.4
         colorDark: 'dark',
-        colorLight: 'light'
+        colorLight: 'light',
+
+        //0.6.0
+        click_for_more: 'Click to learn more.'
     }
 });

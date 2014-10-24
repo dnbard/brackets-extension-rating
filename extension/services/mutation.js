@@ -78,7 +78,8 @@ define(function (require, exports, module){
     function mutateExistingExtensions(targets){
         if (targets.length === 0) return;
 
-        $('#registry, #installed, #themes').click(function(event){
+        //No use for click event anymore, since we have a separate website for it
+        /*$('#registry, #installed, #themes').click(function(event){
             var $t = $(event.target),
                 $parent = $(event.currentTarget);
 
@@ -97,7 +98,7 @@ define(function (require, exports, module){
                         .after(insert);
                 }
             }
-        });
+        });*/
 
         _.each(targets, function(target){
             var $t = $(target),
@@ -128,7 +129,8 @@ define(function (require, exports, module){
                 stars: stars,
                 forks: forks,
                 online: online,
-                max_users: maxUsers
+                max_users: maxUsers,
+                click_for_more: locale.get('click_for_more')
             }));
 
             if (registryEntry.authorAvatar){
