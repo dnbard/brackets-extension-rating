@@ -58,6 +58,9 @@ define(function (require, exports, module){
         
         //0.5.4
         colorDark: 'Foncé',
-        colorLight: 'Clair'
+        colorLight: 'Clair',
+        
+        //0.6.0
+        click_for_more: 'Cliquez pour en savoir plus.'
     }
 });
