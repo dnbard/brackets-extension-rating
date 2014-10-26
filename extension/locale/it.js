@@ -54,6 +54,9 @@ define(function (require, exports, module){
         
          //0.5.4
         colorDark: 'scuro',
-        colorLight: 'chiaro'
+        colorLight: 'chiaro',
+        
+        //0.6.0
+        click_for_more: 'Clicca per saperne di più.'
     }
 });
