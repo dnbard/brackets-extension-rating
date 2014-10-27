@@ -58,6 +58,9 @@ define(function (require, exports, module){
         
         //0.5.4
         colorDark: 'тёмная',
-        colorLight: 'светлая'
+        colorLight: 'светлая',
+        
+        //0.6.0
+        click_for_more: 'Нажмите, чтобы узнать больше.'
     }
 });
