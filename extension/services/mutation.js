@@ -78,8 +78,7 @@ define(function (require, exports, module){
     function mutateExistingExtensions(targets){
         if (targets.length === 0) return;
 
-        //No use for click event anymore, since we have a separate website for it
-        /*$('#registry, #installed, #themes').click(function(event){
+        $('#registry, #installed, #themes').click(function(event){
             var $t = $(event.target),
                 $parent = $(event.currentTarget);
 
@@ -98,7 +97,7 @@ define(function (require, exports, module){
                         .after(insert);
                 }
             }
-        });*/
+        });
 
         _.each(targets, function(target){
             var $t = $(target),
