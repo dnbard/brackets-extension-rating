@@ -11,7 +11,7 @@ define(function (require, exports, module){
         oneMoreVersion: "<div>... і ще одна версія.</div>",
         sortby: "Сортувати за ...",
         author: "Автор",
-        update: "Останнє оновлення",
+        update: "Оновлення",
         trending: "Популярність", //0.3.0
         name: "Назва",
         daily: "завантажень вчора", //0.3.0
@@ -27,12 +27,12 @@ define(function (require, exports, module){
         badge100kTitle: "Перше розширення, що має 100 тис. завантажень",
 
         badgeTop: "Топ",
-        badgeTopTitle: "Найпопулярніші розширення",
+        badgeTopTitle: "Найпопулярніше розширення",
 
         badgeTrend: "Популярне",
         badgeTrendTitle: "Розширення швидко набуває популярності",
 
-        badgeNew: "Новий",
+        badgeNew: "Нове",
         badgeNewTitle: "Нове розширення",
 
         badgeStarsTitle: "Найбільш популярне розширення на GitHub", //0.4.0
@@ -54,6 +54,13 @@ define(function (require, exports, module){
         versionTemplate: "<div>v ${version} від ${date} - ${downloads} завантажень</div>",
 
         //... and ## more versions
-        moreVersionsTemplate: "<div>... і ще ${count} версій</div>"
+        moreVersionsTemplate: "<div>... і ще ${count} версій</div>",
+
+        //0.5.4
+        colorDark: "темна",
+        colorLight: "світла",
+
+        //0.6.0
+        click_for_more: "Натисніть, аби дізнатися більше."
     }
 });
