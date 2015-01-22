@@ -43,7 +43,7 @@ bus.on(bus.list.COUNTER.SAVE, function(){
             dailyUsersStringified;
 
         if (dailyUsers.length >= 24){
-            dailyUsers.split(0, 2);
+            dailyUsers.slice(1);
         }
 
         dailyUsers.push(online);
