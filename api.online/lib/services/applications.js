@@ -26,13 +26,26 @@ function init(initEvents){
 
     bus.on(bus.list.APPLICATION.SAVE, function(app){
         updateWorks ++;
-        Application.findOneAndUpdate({ _id: app.id }, {
-            online: app.online,
-            update: Date.now(),
-            dailyUsers: app.dailyUsers
-        }).exec().then(function(){
-            updateWorks --;
-            if (updateWorks === 0){ bus.emit(bus.list.APPLICATION.ZERO_ONLINE); }
+
+        Application.findOne({ _id: app.id }).exec().then(function(application){
+            var dailyUsers = (application.dailyUsers || '').split(','),
+                dailyUsersStringified;
+
+            application.online = app.online;
+            application.update = Date.now();
+
+            if (dailyUsers.length >= 24){
+                dailyUsers.slice(1);
+            }
+
+            dailyUsers.push(application.online);
+            dailyUsersStringified = dailyUsers.join(',');
+            application.dailyUsers = dailyUsersStringified;
+
+            application.save(function(){
+                updateWorks --;
+                if (updateWorks === 0){ bus.emit(bus.list.APPLICATION.ZERO_ONLINE); }
+            });
         });
 
         Users.find({app: app.id}).lean().exec().then(function(users){
@@ -83,7 +96,7 @@ function check(application){
 
 function get(){
     return Application.find({})
-        .select({name: 1, maxUsers: 1, online: 1, _id: 0})
+        .select({name: 1, maxUsers: 1, online: 1, dailyUsers: 1, _id: 0})
         .lean()
         .exec();
 }
