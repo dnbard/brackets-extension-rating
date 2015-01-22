@@ -38,12 +38,23 @@ bus.on(bus.list.COUNTER.SAVE, function(){
     }
 
     _.each(holder, function(app, id){
-        var online = _.size(app);
+        var online = _.size(app),
+            dailyUsers = (app.dailyUsers || '').split(','),
+            dailyUsersStringified;
+
+        if (dailyUsers.length >= 24){
+            dailyUsers.split(0, 2);
+        }
+
+        dailyUsers.push(online);
+
+        dailyUsersStringified = dailyUsers.join(',');
 
         bus.emit(bus.list.APPLICATION.SAVE,{
             id: id,
             online: online,
-            users: app
+            users: app,
+            dailyUsers: dailyUsersStringified
         });
     });
 

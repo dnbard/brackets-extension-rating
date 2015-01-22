@@ -28,7 +28,8 @@ function init(initEvents){
         updateWorks ++;
         Application.findOneAndUpdate({ _id: app.id }, {
             online: app.online,
-            update: Date.now()
+            update: Date.now(),
+            dailyUsers: app.dailyUsers
         }).exec().then(function(){
             updateWorks --;
             if (updateWorks === 0){ bus.emit(bus.list.APPLICATION.ZERO_ONLINE); }
