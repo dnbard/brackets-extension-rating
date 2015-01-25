@@ -34,8 +34,11 @@ function init(initEvents){
             application.online = app.online;
             application.update = Date.now();
 
-            if (dailyUsers.length >= 24){
-                dailyUsers.slice(1);
+            if (_.size(dailyUsers) >= 24){
+                dailyUsers = _.chain(dailyUsers)
+                    .compact()
+                    .last(23)
+                    .value();
             }
 
             dailyUsers.push(application.online);
