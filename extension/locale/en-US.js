@@ -26,6 +26,8 @@ define(function (require, exports, module){
         badge100k: '100k Downloads',
         badge100kTitle: 'First extension that had 100k downloads',
 
+        badge200kTitle: 'First extension that had 200k downloads', // 0.6.1
+
         badgeTop: 'Top',
         badgeTopTitle: 'Most popular extension',
 

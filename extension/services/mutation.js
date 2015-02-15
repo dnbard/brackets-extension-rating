@@ -191,8 +191,10 @@ define(function (require, exports, module){
     function createMorePanelContent(id, extension, parent){
         var panel = $('<tr class="ext-panel_more"></tr>'),
             holder = $('<td colspan="2"></td>'),
-            hide = $(_.template('<td class="ext-action"><button class="btn primary">${str_hide}</button></td>', {
-                str_hide: locale.get('hide')
+            hide = $(_.template('<td class="ext-action"><a title="${click_for_more}" href="http://brackets.dnbard.com/extension/${str_id}" class="btn fa fa-globe"></a><button class="btn primary">${str_hide}</button></td>', {
+                str_hide: locale.get('hide'),
+                str_id: id,
+                click_for_more: locale.get('click_for_more')
             })),
             registryEntry = registry.get(id);
 

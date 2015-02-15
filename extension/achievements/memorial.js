@@ -8,6 +8,11 @@ define(function(require, exports, module){
                 tag: _.template('<span title="${title}" class="ext-badge ext-badge-100k">100k</span>',{
                     title: locale.get('badge100kTitle')
                 })
+            },
+            'brackets-beautify': {
+                tag: _.template('<span title="${title}" class="ext-badge ext-badge-100k">200k</span>',{
+                    title: locale.get('badge200kTitle')
+                })
             }
         };
 
