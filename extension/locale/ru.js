@@ -25,6 +25,7 @@ define(function (require, exports, module){
 
         badge100k: '100 тыс. загрузок',
         badge100kTitle: 'Первое расширение, набравщее 100 тыс. загрузок',
+        badge200kTitle: 'Первое расширение, набравщее 200 тыс. загрузок', 
 
         badgeTop: 'Лучшее',
         badgeTopTitle: 'Самое популярное расширение',
@@ -62,5 +63,5 @@ define(function (require, exports, module){
         
         //0.6.0
         click_for_more: 'Нажмите, чтобы узнать больше.'
-    }
+    };
 });
