@@ -24,7 +24,9 @@ define(function (require, exports, module){
         badgeAdobeTitle: 'Erweiterung von Adobe',
 
         badge100k: '100k Downloads',
-        badge100kTitle: 'Erste Erweiterung mit 100k Downloads',
+        badge100kTitle: 'Erste Erweiterung mit 100.000 Downloads',
+
+        badge200kTitle: 'Erste Erweiterung mit 200.000 Downloads', // 0.6.1
 
         badgeTop: 'Top',
         badgeTopTitle: 'Sehr beliebte Erweiterung',
@@ -54,6 +56,13 @@ define(function (require, exports, module){
         versionTemplate: '<div>v ${version} seit ${date} - ${downloads} Downloads</div>',
 
         //... and ## more versions
-        moreVersionsTemplate: '<div>... und ${count} weitere Versionen.</div>'
+        moreVersionsTemplate: '<div>... und ${count} weitere Versionen.</div>',
+
+        //0.5.4
+        colorDark: 'dunkel',
+        colorLight: 'hell',
+
+        //0.6.0
+        click_for_more: 'Klicken, um mehr zu erfahren.'
     };
 });

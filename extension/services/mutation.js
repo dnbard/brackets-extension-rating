@@ -112,6 +112,10 @@ define(function (require, exports, module){
                 dailyDownloads = registryEntry ? registryEntry.dailyDownloads : 0,
                 badgeHolder;
 
+            if (registryEntry.faked){
+                return true;
+            }
+
             $t.attr('data-extension-id', id);
 
             $t.find('.ext-info').append(_.template(downloadsTemplate, {
