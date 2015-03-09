@@ -1,7 +1,6 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    _ = require('lodash'),
+var _ = require('lodash'),
     crypto = require('crypto'),
     counter = require('../services/counter'),
     applications = require('../services/applications'),
