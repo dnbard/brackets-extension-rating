@@ -1,8 +1,8 @@
-var schedule = require('node-schedule'),
-    ScheduleWorker = require('./worker'),
+var ScheduleWorker = require('./worker'),
     request = require('request'),
     migrations = require('./migrations'),
-    bus = require('./bus');
+    bus = require('./bus'),
+    _ = require('');
 
 function pingPongHerokuHandler(){
     var host = process.env.NODE_ENV === 'development'? 'http://localhost:9000/':'http://brackets-online.herokuapp.com/';
@@ -25,5 +25,11 @@ exports.init = function(){
             secondHerokuWorker = new ScheduleWorker({ minute: 45 }, pingPongHerokuHandler),
             saveStatsWorker = new ScheduleWorker({ minute: 0 }, saveStatsHandler),
             maxUsersWorker = new ScheduleWorker({ minute: 1 }, maxUsersCalculator);
+
+        for(var i = 0; i < 60; i += 5){
+            new ScheduleWorker({ minute: i }, function(){
+                bus.emit(bus.list.COUNTER.SAVE_OFTEN);
+            });
+        }
     });
 }

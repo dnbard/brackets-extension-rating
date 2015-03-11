@@ -1,6 +1,7 @@
 var q = require('q'),
-    Applications = require('../services/applications'),
+    ApplicationsService = require('../services/applications'),
     mongoose = require('mongoose'),
+    Applications = mongoose.model('Application'),
     Counter = mongoose.model('Counters'),
     bus = require('./bus'),
     _ = require('lodash'),
@@ -20,26 +21,24 @@ function put(app, user){
     Counter.findOne({
         application: app,
         user: user
-    })
-        .exec()
-        .then(function(counter){
-            if (counter){
-                counter.update = new Date();
-            } else {
-                counter = new Counter({
-                    application: app,
-                    user: user
-                });
-            }
+    }).exec().then(function(counter){
+        if (counter){
+            counter.update = new Date();
+        } else {
+            counter = new Counter({
+                application: app,
+                user: user
+            });
+        }
 
-            counter.save();
-        });
+        counter.save();
+    });
 }
 
 function count(app, user){
     var defer = q.defer();
 
-    if (!app || !user || !Applications.check(app)){
+    if (!app || !user || !ApplicationsService.check(app)){
         defer.reject();
     } else {
         put(app, user);
@@ -49,24 +48,38 @@ function count(app, user){
     return defer.promise;
 }
 
-bus.on(bus.list.COUNTER.SAVE, function(){
-    if (_.size(holder) === 0){
-        bus.emit(bus.list.APPLICATION.ZERO_ONLINE);
-        holder = {};
-        return;
-    }
-
-    _.each(holder, function(app, id){
-        var online = _.size(app);
-
-        bus.emit(bus.list.APPLICATION.SAVE,{
-            id: id,
-            online: online,
-            users: app
+bus.on(bus.list.COUNTER.SAVE_OFTEN, function(){
+    ApplicationsService.get().then(function(apps){
+        _.each(apps, function(app){
+            Counter.count({
+                application: app._id
+            }).exec().then(function(online){
+                app.online = online;
+                app.save();
+            });
         });
     });
+});
 
-    holder = {};
+bus.on(bus.list.COUNTER.SAVE, function(){
+    ApplicationsService.get().then(function(apps){
+        _.each(apps, function(app){
+            Counter.count({
+                application: app._id
+            }).exec().then(function(online){
+                app.online = online;
+                app.save();
+
+                bus.emit(bus.list.APPLICATION.SAVE,{
+                    id: app._id,
+                    online: online,
+                    users: holder[app._id]
+                });
+            });
+        });
+
+        holder = {};
+    });
 });
 
 exports.count = count;

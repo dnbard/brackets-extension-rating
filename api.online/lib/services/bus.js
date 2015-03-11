@@ -14,7 +14,8 @@ function getInstance(){
 function init(instance){
     instance.list = {
         COUNTER: {
-            SAVE: 'counter.save'
+            SAVE: 'counter.save',
+            SAVE_OFTEN: 'counter.save.often'
         },
         APPLICATION:{
             SAVE: 'application.save',
