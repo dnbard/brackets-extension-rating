@@ -25,10 +25,9 @@ exports.init = function(){
             saveStatsWorker = new ScheduleWorker({ minute: 0 }, saveStatsHandler),
             maxUsersWorker = new ScheduleWorker({ minute: 1 }, maxUsersCalculator);
 
-        for(var i = 0; i < 60; i += 5){
-            new ScheduleWorker({ minute: i }, function(){
-                bus.emit(bus.list.COUNTER.SAVE_OFTEN);
-            });
-        }
+
+        setInterval(function(){
+            bus.emit(bus.list.COUNTER.SAVE_OFTEN);
+        }, 300000);
     });
 }
