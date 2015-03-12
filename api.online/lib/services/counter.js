@@ -64,24 +64,26 @@ bus.on(bus.list.COUNTER.SAVE_OFTEN, function(){
 });
 
 bus.on(bus.list.COUNTER.SAVE, function(){
-    ApplicationsService.get().then(function(apps){
-        _.each(apps, function(app){
-            Counter.count({
-                application: app._id
-            }).exec().then(function(online){
-                app.online = online;
-                app.save();
+    Applications.find({})
+        .exec()
+        .then(function(apps){
+            _.each(apps, function(app){
+                Counter.count({
+                    application: app._id
+                }).exec().then(function(online){
+                    app.online = online;
+                    app.save();
 
-                bus.emit(bus.list.APPLICATION.SAVE,{
-                    id: app._id,
-                    online: online,
-                    users: holder[app._id]
+                    bus.emit(bus.list.APPLICATION.SAVE,{
+                        id: app._id,
+                        online: online,
+                        users: holder[app._id]
+                    });
+
+                    holder[app._id] = [];
                 });
             });
         });
-
-        holder = {};
-    });
 });
 
 exports.count = count;
