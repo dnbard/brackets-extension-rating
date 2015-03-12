@@ -1,8 +1,7 @@
 var ScheduleWorker = require('./worker'),
     request = require('request'),
     migrations = require('./migrations'),
-    bus = require('./bus'),
-    _ = require('');
+    bus = require('./bus');
 
 function pingPongHerokuHandler(){
     var host = process.env.NODE_ENV === 'development'? 'http://localhost:9000/':'http://brackets-online.herokuapp.com/';
