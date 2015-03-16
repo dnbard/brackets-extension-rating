@@ -1,6 +1,6 @@
 define(function(require, exports, module){
     var registry = {},
-        _ = require('../vendor/lodash.min'),
+        _ = require('thirdparty/lodash'),
         config = require('../config'),
         ExtensionService = require('./extensions'),
         achievements = [],

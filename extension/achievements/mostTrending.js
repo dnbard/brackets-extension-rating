@@ -1,7 +1,7 @@
 define(function(require, exports, module){
     var Achievement = require('./achievement'),
         config = require('../config'),
-        _ = require('../vendor/lodash.min'),
+        _ = require('thirdparty/lodash'),
         locale = require('../services/locale'),
         numberOfTrendingExtensions = 7;
 

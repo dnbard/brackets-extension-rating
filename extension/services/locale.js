@@ -36,7 +36,7 @@ define(function (require, exports, module){
             'ru-RU' : russianLanguage
             //More locals to add here
     },
-        _ = require('../vendor/lodash.min'),
+        _ = require('thirdparty/lodash'),
         defaultLocale = 'en-US';
 
     function getCurrentLocale(){

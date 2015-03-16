@@ -1,6 +1,6 @@
 define(function (require, exports, module){
     var q = require('../vendor/q'),
-        _ = require('../vendor/lodash.min');
+        _ = require('thirdparty/lodash');
 
     exports.getRegistry = function(){
         function getRegistry(registryPathTemplate, defer, iteration){

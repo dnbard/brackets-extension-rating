@@ -1,5 +1,5 @@
 define(function (require, exports, module){
-    var _ = require('../vendor/lodash.min'),
+    var _ = require('thirdparty/lodash'),
         target = $('body')[0],
         config = require('../config'),
         locale = require('./locale'),
