@@ -1,7 +1,7 @@
 define(function(require, exports, module){
     var Achievement = require('./achievement'),
         config = require('../config'),
-        _ = require('thirdparty/lodash'),
+        _ = brackets.getModule('thirdparty/lodash'),
         locale = require('../services/locale'),
         dictionary = {
             'themesforbrackets': {

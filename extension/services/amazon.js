@@ -1,6 +1,6 @@
 define(function (require, exports, module){
     var q = require('../vendor/q'),
-        _ = require('thirdparty/lodash');
+        _ = brackets.getModule('thirdparty/lodash');
 
     exports.getRegistry = function(){
         function getRegistry(registryPathTemplate, defer, iteration){

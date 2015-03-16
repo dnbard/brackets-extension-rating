@@ -1,5 +1,5 @@
 define(function (require, exports, module){
-    var _ = require('thirdparty/lodash'),
+    var _ = brackets.getModule('thirdparty/lodash'),
         q = require('../vendor/q'),
         github = require('./github'),
         amazon = require('./amazon'),
