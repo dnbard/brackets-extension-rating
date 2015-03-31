@@ -28,6 +28,6 @@ exports.init = function(){
 
         setInterval(function(){
             bus.emit(bus.list.COUNTER.SAVE_OFTEN);
-        }, 300000);
+        }, 1000 * 10);
     });
 }
