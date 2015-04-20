@@ -36,7 +36,7 @@ define(function(require, exports, module){
                 color = '';
             }
 
-            return _.template('<span title="${title}${color}" class="ext-badge ext-badge-theme"><img src="${badge}" /></span>',{
+            return _.template('<span title="${title}${color}" class="ext-badge ext-badge-theme"><img src="${badge}" /></span>')({
                 badge: badge,
                 title: locale.get('themeTitle'),
                 color: color ? '(' + locale.get(color) + ')' : ''

@@ -18,7 +18,7 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return _.template('<span title="${title}" class="ext-badge ext-badge-adobe">${badge}</span>',{
+            return _.template('<span title="${title}" class="ext-badge ext-badge-adobe">${badge}</span>')({
                 badge: locale.get('badgeAdobe'),
                 title: locale.get('badgeAdobeTitle')
             });

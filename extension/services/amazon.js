@@ -5,7 +5,7 @@ define(function (require, exports, module){
     exports.getRegistry = function(){
         function getRegistry(registryPathTemplate, defer, iteration){
             $.ajax({
-                url: _.template(registryPathTemplate, {
+                url: _.template(registryPathTemplate)({
                     date: new Date().getTime()
                 })
             }).success(function(data){

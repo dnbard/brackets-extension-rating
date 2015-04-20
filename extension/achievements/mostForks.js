@@ -22,7 +22,7 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating){
-            return _.template('<span title="${title}" class="ext-badge ext-badge-forks"><i class="fa fa-code-fork"></i></span>',{
+            return _.template('<span title="${title}" class="ext-badge ext-badge-forks"><i class="fa fa-code-fork"></i></span>')({
                 title: locale.get('badgeForksTitle')
             });
         }

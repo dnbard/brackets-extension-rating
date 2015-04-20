@@ -8,7 +8,7 @@ define(function (require, exports, module){
         extensionService = require('./extensions'),
         downloadsTemplate = require('text!../templates/downloads.html'),
         ThemeAchievement = require('../achievements/theme'),
-        selectTemplate = _.template(require('text!../templates/sortButton.html'),{
+        selectTemplate = _.template(require('text!../templates/sortButton.html'))({
             author: locale.get('author'),
             downloads: locale.get('downloads'),
             update: locale.get('update'),
@@ -118,7 +118,7 @@ define(function (require, exports, module){
 
             $t.attr('data-extension-id', id);
 
-            $t.find('.ext-info').append(_.template(downloadsTemplate, {
+            $t.find('.ext-info').append(_.template(downloadsTemplate)({
                 downloads: totalDownloads,
                 str_downloads: locale.get('downloads'),
                 str_more: locale.get('more'),
@@ -195,7 +195,7 @@ define(function (require, exports, module){
     function createMorePanelContent(id, extension, parent){
         var panel = $('<tr class="ext-panel_more"></tr>'),
             holder = $('<td colspan="2"></td>'),
-            hide = $(_.template('<td class="ext-action"><a title="${click_for_more}" href="http://brackets.dnbard.com/extension/${str_id}" class="btn fa fa-globe"></a><button class="btn primary">${str_hide}</button></td>', {
+            hide = $(_.template('<td class="ext-action"><a title="${click_for_more}" href="http://brackets.dnbard.com/extension/${str_id}" class="btn fa fa-globe"></a><button class="btn primary">${str_hide}</button></td>')({
                 str_hide: locale.get('hide'),
                 str_id: id,
                 click_for_more: locale.get('click_for_more')
@@ -214,7 +214,7 @@ define(function (require, exports, module){
                     diffDays = daysBetween(maxDate, minDate) || 1,
                     dailyDownloads = registryEntry.dailyDownloads || 0;
 
-                holder.append(_.template(locale.get('statusTemplate'), {
+                holder.append(_.template(locale.get('statusTemplate'))({
                     days: diffDays,
                     daily: dailyDownloads,
                     str_daily: locale.get('daily'),
@@ -223,7 +223,7 @@ define(function (require, exports, module){
             }
 
             _.each(versions, function(info, index){
-                holder.append(_.template(locale.get('versionTemplate'),{
+                holder.append(_.template(locale.get('versionTemplate'))({
                     version: info.version,
                     date: new Date(info.published).toLocaleDateString(brackets.getLocale(), {
                         "year": "numeric",
@@ -237,7 +237,7 @@ define(function (require, exports, module){
                     if (count === 1) {
                         holder.append(locale.get('oneMoreVersion'));
                     } else {
-                        holder.append(_.template(locale.get('moreVersionsTemplate'),{ count : count }));
+                        holder.append(_.template(locale.get('moreVersionsTemplate'))({ count : count }));
                     }
                     return false;
                 }
