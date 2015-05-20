@@ -5,9 +5,9 @@ define(function(require, exports, module){
         locale = require('../services/locale'),
         ExtensionsService = require('../services/extensions');
 
-    function JSAchievement(){
+    function HTMLAchievement(){
         this.calculate = function(extensions){
-            var regexp = /((\s|\b)coffeescript(\s|\b)|(\s|\b)coffee(\s|\b)|(\s|\b)js(\s|\b)|javascript)/i;
+            var regexp = /((\s|\b)linter(\s|\b)|(\s|\b)csslint(\s|\b)|(\s|\b)jslint(\s|\b)|(\s|\b)lint(\s|\b)|(\s|\b)jshint(\s|\b))/i;
 
             _.chain(extensions).filter(function(extension){
                 return regexp.test(extension.description) || regexp.test(extension.title);
@@ -17,13 +17,13 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return _.template('<span title="${title}" class="ext-badge ext-badge-js">JS</span>')({
-                badge: locale.get('badgeJS'),
-                title: locale.get('badgeJSTitle')
+            return _.template('<span title="${title}" class="ext-badge ext-badge-lint">Linter</span>')({
+                badge: locale.get('badgeLint'),
+                title: locale.get('badgeLintTitle')
             });
         }
     }
 
-    JSAchievement.prototype = Achievement;
-    module.exports = JSAchievement;
+    HTMLAchievement.prototype = Achievement;
+    module.exports = HTMLAchievement;
 });

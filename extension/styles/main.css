@@ -53,6 +53,37 @@ span.ext-daily{
     background-color: #4E93DD;
 }
 
+.ext-badges > .ext-badge-js{
+    background-color: #D5B931;
+    font-weight: bold;
+}
+
+.ext-badges > .ext-badge-css{
+    background-color: #0C73B8;
+    font-weight: bold;
+}
+
+.ext-badges > .ext-badge-html{
+    background-color: #E55126;
+    font-weight: bold;
+}
+
+.ext-badges > .ext-badge-lint{
+    background-color: #ac2377;
+}
+
+.ext-badges > .ext-badge-git{
+    background-color: #F34F29;
+}
+
+.ext-badges > .ext-badge-php{
+    background-color: #6082BB;
+}
+
+.ext-badges > .ext-badge-jade{
+    background-color: #B8DACA;
+}
+
 .ext-badges > .ext-badge-forks{
     background-color: rgb(94, 168, 60);
 }

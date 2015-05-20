@@ -5,9 +5,9 @@ define(function(require, exports, module){
         locale = require('../services/locale'),
         ExtensionsService = require('../services/extensions');
 
-    function JSAchievement(){
+    function CSSAchievement(){
         this.calculate = function(extensions){
-            var regexp = /((\s|\b)coffeescript(\s|\b)|(\s|\b)coffee(\s|\b)|(\s|\b)js(\s|\b)|javascript)/i;
+            var regexp = /((\s|\b)css(\s|\b)|(\s|\b)less(\s|\b)|(\s|\b)SASS(\s|\b))/i;
 
             _.chain(extensions).filter(function(extension){
                 return regexp.test(extension.description) || regexp.test(extension.title);
@@ -17,13 +17,13 @@ define(function(require, exports, module){
         }
 
         this.getTag = function(rating, element){
-            return _.template('<span title="${title}" class="ext-badge ext-badge-js">JS</span>')({
-                badge: locale.get('badgeJS'),
-                title: locale.get('badgeJSTitle')
+            return _.template('<span title="${title}" class="ext-badge ext-badge-css">[C]SS</span>')({
+                badge: locale.get('badgeCSS'),
+                title: locale.get('badgeCSSTitle')
             });
         }
     }
 
-    JSAchievement.prototype = Achievement;
-    module.exports = JSAchievement;
+    CSSAchievement.prototype = Achievement;
+    module.exports = CSSAchievement;
 });

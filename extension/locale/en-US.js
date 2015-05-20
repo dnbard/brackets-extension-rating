@@ -40,6 +40,21 @@ define(function (require, exports, module){
         badgeStarsTitle: 'Most popular extension on GitHub', //0.4.0
         badgeForksTitle: 'Most forked extension on GitHub', //0.4.0
 
+        badgeJS: 'JS', //0.7.0
+        badgeJSTitle: 'JavaScript Extension', //0.7.0
+
+        badgeCSS: 'CSS', //0.7.0
+        badgeCSSTitle: 'CSS/LESS/SASS Extension', //0.7.0
+
+        badgeHTML: 'HTML', //0.7.0
+        badgeHTMLTitle: 'HTML Extension', //0.7.0
+
+        badgeLint: 'Linter', //0.7.0
+        badgeLintTitle: 'Linter Extension', //0.7.0
+
+        badgeGit: 'Git', //0.7.0
+        badgeGitTitle: 'Extension for Git repositories', //0.7.0
+
         themeTitle: 'Brackets Theme',
         /*END of BADGES*/
 
