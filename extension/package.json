@@ -1,14 +1,14 @@
 {
     "name": "dnbard.extensions-rating",
     "title": "Extensions Rating",
-    "description": "Shows extension's downloads count(daily, overall, average and per version) and GitHub stats(stars and forks). Find most usable and popular extensions for Brackets via badges system! Sort extensions and find themes!",
+    "description": "Shows extension's download count(daily, overall, average and per version) and GitHub stats(stars and forks). Find most usable and popular extensions for Brackets via badges system! Sort extensions and find themes!",
     "homepage": "https://github.com/dnbard/brackets-extension-rating",
-    "version": "0.6.4",
+    "version": "0.7.0",
     "author": "Alex Bardanov <dnbard@gmail.com>",
     "license": "MIT",
     "engines": {
         "brackets": ">=1.2.0"
     },
-    "keywords": ["extensions", "rating", "github", "downloads"],
+    "keywords": ["extensions", "rating", "github", "downloads", "stars", "badges"],
     "i18n": ["en", "en-GB", "de", "es", "it", "ro", "ru", "sv", "tr", "uk"]
 }

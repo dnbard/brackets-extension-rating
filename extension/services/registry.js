@@ -14,12 +14,8 @@ define(function(require, exports, module){
         MostStarsAchievement = require('../achievements/mostStars'),
         MostForksAchievement = require('../achievements/mostForks'),
         ThemeAchievement = require('../achievements/theme'),
-        JSAchievement = require('../achievements/javascript'),
-        CSSAchievement = require('../achievements/css'),
-        HTMLAchievement = require('../achievements/html'),
-        LintAchievement = require('../achievements/linter'),
-        GitAchievement = require('../achievements/git'),
         AchievementFactory = require('../achievements/factory'),
+        locale = require('./locale'),
         state = config.state;
 
     function getDownloadsCounterByDate(array, date){
@@ -61,11 +57,46 @@ define(function(require, exports, module){
             achievements.push(new AdobeAchievement());
             achievements.push(new MostStarsAchievement());
             achievements.push(new MostForksAchievement());
-            achievements.push(new JSAchievement());
-            achievements.push(new CSSAchievement());
-            achievements.push(new HTMLAchievement());
-            achievements.push(new LintAchievement());
-            achievements.push(new GitAchievement());
+
+            achievements.push(AchievementFactory.create({
+                regexp: /((\s|\b)coffeescript(\s|\b)|(\s|\b)coffee(\s|\b)|(\s|\b)js(\s|\b)|javascript)/i,
+                fields: [ 'title', 'description' ],
+                badge: locale.get('badgeJS'),
+                class: 'ext-badge-js',
+                title: locale.get('badgeJSTitle')
+            }));
+
+            achievements.push(AchievementFactory.create({
+                regexp: /((\s|\b)css(\s|\b)|(\s|\b)less(\s|\b)|(\s|\b)SASS(\s|\b))/i,
+                fields: [ 'title', 'description' ],
+                badge: locale.get('badgeCSS'),
+                class: 'ext-badge-css',
+                title: locale.get('badgeCSSTitle')
+            }));
+
+            achievements.push(AchievementFactory.create({
+                regexp: /(\s|\b)html(\s|\b)/i,
+                fields: [ 'title', 'description' ],
+                badge: locale.get('badgeHTML'),
+                class: 'ext-badge-html',
+                title: locale.get('badgeHTMLTitle')
+            }));
+
+            achievements.push(AchievementFactory.create({
+                regexp: /((\s|\b)linter(\s|\b)|(\s|\b)csslint(\s|\b)|(\s|\b)jslint(\s|\b)|(\s|\b)lint(\s|\b)|(\s|\b)jshint(\s|\b))/i,
+                fields: [ 'title', 'description' ],
+                badge: locale.get('badgeLint'),
+                class: 'ext-badge-lint',
+                title: locale.get('badgeLintTitle')
+            }));
+
+            achievements.push(AchievementFactory.create({
+                regexp: /(\s|\b)git(\s|\b)/i,
+                fields: [ 'title' ],
+                badge: locale.get('badgeGit'),
+                class: 'ext-badge-git',
+                title: locale.get('badgeGitTitle')
+            }));
 
             achievements.push(AchievementFactory.create({
                 regexp: /((\s|\b)php(\s|\b)|(\s|\b)wordpress(\s|\b))/i,
