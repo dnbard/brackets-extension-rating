@@ -11,6 +11,9 @@
 Right now Extension Rating is translated in English and Italian languages. You can simply add translation to your language. Please [read Localization Support ticket](https://github.com/dnbard/brackets-extension-rating/issues/3) and submit translation files in individual pull request.
 
 ##Patch notes
+### v0.7.*
+* added thematical badges(for javascript, css, html, jade, git and PHP extensions)
+
 ### v0.6.*
 * Extension details are opening in browser window now
 
@@ -26,4 +29,4 @@ Right now Extension Rating is translated in English and Italian languages. You c
 * Sort extensions by GitHub ratings
 * All badges now have tooltips
 
-*Note: all statistics are processed with separate Web Worker and that information may be a little outdated by ~1 hour*
+*Note: all statistics are processed with separate Web Service and that information may be a little outdated by ~1 hour*
