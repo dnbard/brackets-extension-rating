@@ -36,6 +36,8 @@ bus.on(bus.list.REGISTRY.UPDATED, function(result){
         .exec()
         .then(function(ratings){
             populateDownloads(ratings).then(function(){
+                console.log('Registry cached');
+
                 exports.set('registry', ratings);
                 bus.emit(bus.list.REGISTRY.CACHED, ratings);
             }, function(err){
@@ -65,6 +67,10 @@ function populateDownloads(extensions){
         if (!e.downloads){ e.downloads = []; }
 
         e.downloads.push(d);
+    });
+
+    stream.on('error', function(){
+        console.log(arguments);
     });
 
     stream.on('close', function(){
