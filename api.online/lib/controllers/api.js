@@ -15,8 +15,6 @@ function tick(req, res){
         userId = req.params.user,
         user, list;
 
-    console.log('Tick request from %s', ipAddr);
-
     if (userId && usersCache.check(userId)){
         user = userId;
     } else {
