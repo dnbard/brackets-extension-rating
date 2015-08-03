@@ -15,7 +15,10 @@ var request = require('request'),
             var json = JSON.parse(body);
             processJSON(json);
         },
-        emit: function(){}
+        emit: function(){},
+        error: function(){
+            console.log(arguments);
+        }
     };
 
 function processJSON(payload){
@@ -33,7 +36,7 @@ function processJSON(payload){
     async.parallel(commands, function(err, result){
         body = undefined;
 
-        console.log('parallel done');
+        console.log('Process JSON parallel commands are done');
         bus.emit(bus.list.REGISTRY.UPDATED, result);
     });
 }
@@ -46,17 +49,4 @@ exports.handler = function(){
         .pipe(customPiper);
 }
 
-exports.dbFilter = function(){
-    /*setTimeout(function(){
-        console.log('db filter');
-        var stream = Extension.stream();
-
-        stream.on('data', function (extension) {
-            if (!extension.downloads || extension.downloads.lenght === 0) return;
-
-            for(var i = extension.downloads.lenght - 1; i >= 0; i--){
-                var version = extension.downloads[i];
-            }
-        });
-    }, 8000);*/
-}
+exports.dbFilter = function(){ }

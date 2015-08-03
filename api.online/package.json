@@ -75,5 +75,6 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "main": "server.js"
 }
