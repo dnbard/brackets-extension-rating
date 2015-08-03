@@ -1,5 +1,5 @@
 define(function(require, exports){
-    var trackingServiceUrl = 'http://brackets-online.herokuapp.com/',
+    var trackingServiceUrl = 'http://online-dnbard.rhcloud.com/',
         appToken = '53d5549ee31c428fe600006f',
         mins60 = 60 * 60 * 1000,
         mins5 = 5 * 60 * 1000,
