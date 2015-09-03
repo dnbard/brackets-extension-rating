@@ -35,7 +35,7 @@ define(function (require, exports, module){
             'fr-FR' : frenchLanguage,
             'ru' : russianLanguage,
             'ru-RU' : russianLanguage,
-            'zh-TW' : chineseTraditionalLanguage
+            'zh-tw' : chineseTraditionalLanguage
             //More locals to add here
     },
         _ = brackets.getModule('thirdparty/lodash'),
