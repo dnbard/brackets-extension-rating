@@ -1,6 +1,8 @@
 var ScheduleWorker = require('./worker'),
     migrations = require('./migrations'),
-    bus = require('./bus');
+    bus = require('./bus'),
+    mongoose = require('mongoose'),
+    Counter = mongoose.model('Counters');
 
 function saveStatsHandler(){
     bus.emit(bus.list.COUNTER.SAVE);
@@ -19,5 +21,16 @@ exports.init = function(){
         setInterval(function(){
             bus.emit(bus.list.COUNTER.SAVE_OFTEN);
         }, 1000 * 10);
+
+        new ScheduleWorker({ second: 1 }, function(){
+            var date = new Date();
+            date.setHours(date.getHours() - 1);
+
+            Counter.remove({
+                update: { $lte: date }
+            }, function(){
+                console.log('TTL');
+            });
+        });
     });
 }
