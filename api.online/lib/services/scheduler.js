@@ -26,9 +26,12 @@ exports.init = function(){
             var date = new Date();
             date.setHours(date.getHours() - 1);
 
-            Counter.remove({
+            Counter.find({
                 update: { $lte: date }
-            }, function(){
+            }).remove(function(err){
+                if (err){
+                    return console.log(err);
+                }
                 console.log('TTL');
             });
         });
