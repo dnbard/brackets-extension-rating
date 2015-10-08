@@ -24,7 +24,9 @@ define(function (require, exports, module){
         badgeAdobeTitle: 'Adobe Uzantısı',
 
         badge100k: '100bin İndirme',
-        badge100kTitle: 'İlk uzantı 100bin indirme',
+        badge100kTitle: '100 bin indirmeye sahip ilk uzantı',
+
+        badge200kTitle: '200 bin indirmeye sahip ilk uzantı', // 0.6.1
 
         badgeTop: 'Popüler',
         badgeTopTitle: 'En popüler uzantılar',
@@ -37,6 +39,21 @@ define(function (require, exports, module){
 
         badgeStarsTitle: 'GitHub\'ta en popüler uzantı', //0.4.0
         badgeForksTitle: 'GitHub\'ta en çok çatallanan uzantı', //0.4.0
+
+        badgeJS: 'JS', //0.7.0
+        badgeJSTitle: 'JavaScript Eklentisi', //0.7.0
+
+        badgeCSS: 'CSS', //0.7.0
+        badgeCSSTitle: 'CSS/LESS/SASS Eklentisi', //0.7.0
+
+        badgeHTML: 'HTML', //0.7.0
+        badgeHTMLTitle: 'HTML Eklentisi', //0.7.0
+
+        badgeLint: 'Linter', //0.7.0
+        badgeLintTitle: 'Linter Eklentisi', //0.7.0
+
+        badgeGit: 'Git', //0.7.0
+        badgeGitTitle: 'Git repository\'leri için Eklenti', //0.7.0
 
         themeTitle: 'Brackets Tema',
         /*END of BADGES*/
@@ -54,6 +71,13 @@ define(function (require, exports, module){
         versionTemplate: '<div>v ${version} - ${date} - ${downloads} indirme</div>',
 
         //... and ## more versions
-        moreVersionsTemplate: '<div>... ve ${count} diğer versiyon</div>'
+        moreVersionsTemplate: '<div>... ve ${count} diğer versiyon</div>',
+
+        //0.5.4
+        colorDark: 'koyu',
+        colorLight: 'açık',
+
+        //0.6.0
+        click_for_more: 'Daha fazla bilgi için tıklayın.'
     }
 });
