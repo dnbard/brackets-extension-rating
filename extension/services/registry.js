@@ -45,7 +45,7 @@ define(function(require, exports, module){
 
     exports.init = function(){
         var path = state === 'production'?
-            'http://extensions-dnbard.rhcloud.com/':
+            'https://brackets-rating.herokuapp.com/':
             'http://localhost:9000/';
 
         if (achievements.length === 0){
