@@ -11,6 +11,7 @@ define(function (require, exports, module){
         frenchLanguage = require('../locale/fr'),
         russianLanguage = require('../locale/ru'),
         chineseTraditionalLanguage = require('../locale/zh-TW'),
+        polishLanguage = require('../locale/pl'),
         dictionaries = {
             'en': englishLanguage,
             'en-GB': englishLanguage,
@@ -35,7 +36,8 @@ define(function (require, exports, module){
             'fr-FR' : frenchLanguage,
             'ru' : russianLanguage,
             'ru-RU' : russianLanguage,
-            'zh-tw' : chineseTraditionalLanguage
+            'zh-tw' : chineseTraditionalLanguage,
+            'pl' : polishLanguage
             //More locals to add here
     },
         _ = brackets.getModule('thirdparty/lodash'),
